@@ -50,6 +50,28 @@
         radial-gradient(circle at top right, rgba(255, 255, 255, 0.75), transparent 34%),
         linear-gradient(180deg, #fbf8f4 0%, #f1e9df 100%);
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page,
+    .brandbar,
+    .hero,
+    .hero-grid,
+    .hero-copy,
+    .tool,
+    .card,
+    .grid,
+    .field,
+    .checks,
+    .check,
+    .hero-highlights div,
+    .hero-panel,
+    .hero-cta,
+    input,
+    select,
+    button {
+      min-width: 0;
+      max-width: 100%;
     }
 
     a {
@@ -105,6 +127,7 @@
       color: var(--muted);
       font-size: 0.94rem;
       margin-top: 3px;
+      overflow-wrap: anywhere;
     }
 
     .brand-pill {
@@ -116,9 +139,10 @@
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.72);
       color: #5e4b2f;
-      font-size: 0.87rem;
+      font-size: 0.84rem;
       font-weight: 600;
       white-space: nowrap;
+      overflow-wrap: anywhere;
     }
 
     .brand-pill::before {
@@ -154,7 +178,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 18px;
+      gap: 20px;
       border-radius: 32px;
       background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 239, 229, 0.9));
@@ -193,26 +217,27 @@
 
     .hero-copy p {
       margin: 0;
-      max-width: 46ch;
+      max-width: 44ch;
       color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.78;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
     }
 
     .hero-actions {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 6px;
+      gap: 14px;
+      margin-top: 2px;
     }
 
-    .hero-cta,
-    .hero-note {
+    .hero-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
+      min-height: 50px;
+      padding: 0 20px;
       border-radius: 999px;
       font-weight: 700;
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
@@ -229,22 +254,40 @@
       box-shadow: 0 16px 28px rgba(157, 122, 68, 0.28);
     }
 
-    .hero-note {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--ink);
-      font-size: 0.94rem;
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: -4px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-item::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.1);
     }
 
     .hero-highlights {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 10px;
+      gap: 14px;
+      margin-top: 8px;
     }
 
     .hero-highlights div {
-      padding: 16px 16px 15px;
+      padding: 18px 18px 16px;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.76);
       border: 1px solid rgba(184, 151, 98, 0.12);
@@ -263,6 +306,7 @@
       color: var(--muted);
       font-size: 0.88rem;
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
 
     .hero-image {
@@ -280,8 +324,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(246, 241, 234, 0.14), transparent 28%),
-        linear-gradient(180deg, transparent 28%, rgba(16, 16, 16, 0.42) 100%);
+        linear-gradient(90deg, rgba(246, 241, 234, 0.2), transparent 30%),
+        linear-gradient(180deg, rgba(18, 16, 14, 0.04) 18%, rgba(16, 16, 16, 0.48) 100%);
     }
 
     .hero-panel {
@@ -289,7 +333,7 @@
       right: 28px;
       bottom: 28px;
       z-index: 1;
-      max-width: 320px;
+      max-width: 334px;
       padding: 20px 20px 18px;
       border-radius: 22px;
       color: white;
@@ -311,12 +355,13 @@
       color: rgba(255, 255, 255, 0.76);
       font-size: 0.92rem;
       line-height: 1.55;
+      overflow-wrap: anywhere;
     }
 
     .tool {
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-      gap: 26px;
+      gap: 28px;
       align-items: start;
     }
 
@@ -330,7 +375,7 @@
     }
 
     .card-header {
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .card h2 {
@@ -350,13 +395,13 @@
     }
 
     .form-section + .form-section {
-      margin-top: 22px;
-      padding-top: 22px;
+      margin-top: 26px;
+      padding-top: 26px;
       border-top: 1px solid rgba(123, 104, 79, 0.12);
     }
 
     .section-title {
-      margin: 0 0 14px;
+      margin: 0 0 16px;
       font-size: 0.84rem;
       font-weight: 800;
       letter-spacing: 0.14em;
@@ -389,8 +434,8 @@
     input,
     select {
       width: 100%;
-      min-height: 52px;
-      border: 1px solid rgba(123, 104, 79, 0.18);
+      min-height: 54px;
+      border: 1px solid rgba(123, 104, 79, 0.22);
       border-radius: 16px;
       padding: 14px 15px;
       font: inherit;
@@ -473,7 +518,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 28px;
     }
 
     .submit {
@@ -512,6 +557,7 @@
 
     .helper {
       margin: 0;
+      max-width: 58ch;
     }
 
     .tiny {
@@ -736,6 +782,10 @@
       }
 
       .brand-pill {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 0.8rem;
+        line-height: 1.35;
         white-space: normal;
       }
 
@@ -749,8 +799,7 @@
       }
 
       .hero-image {
-        order: -1;
-        min-height: 250px;
+        min-height: 220px;
       }
 
       .hero-copy {
@@ -759,7 +808,7 @@
         box-shadow: none;
         border: 0;
         backdrop-filter: none;
-        padding: 24px 20px 24px;
+        padding: 24px 20px 22px;
       }
 
       .hero-copy p {
@@ -768,7 +817,8 @@
 
       h1 {
         max-width: 100%;
-        font-size: clamp(2.2rem, 11vw, 3.2rem);
+        font-size: clamp(2.05rem, 10vw, 2.85rem);
+        line-height: 0.98;
       }
 
       .hero-actions {
@@ -776,9 +826,13 @@
         align-items: stretch;
       }
 
-      .hero-cta,
-      .hero-note {
+      .hero-cta {
         width: 100%;
+      }
+
+      .hero-trust {
+        flex-direction: column;
+        gap: 8px;
       }
 
       .hero-panel {
@@ -828,21 +882,26 @@
           <span>Local Homes, Modern Marketing.</span>
         </div>
       </div>
-      <div class="brand-pill">Derry and North West homes, instant guide price</div>
+      <div class="brand-pill">North West homes, instant guide prices</div>
     </div>
 
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Indicative property valuation</div>
+          <div class="eyebrow">Instant guide price</div>
           <h1>See what your home could be worth.</h1>
           <p>
-            Answer a few simple questions and get a quick guide price based on your area, your home, and the features buyers look for.
+            Answer a few straightforward questions and get an instant guide price shaped around your area, your home, and the details buyers notice most.
           </p>
 
           <div class="hero-actions">
-            <a class="hero-cta" href="#valuationForm">Start valuation</a>
-            <div class="hero-note">Takes less than a minute</div>
+            <a class="hero-cta" href="#valuationForm">Get guide price</a>
+          </div>
+
+          <div class="hero-trust" aria-label="Valuation reassurance">
+            <span class="trust-item">Takes less than a minute</span>
+            <span class="trust-item">No obligation</span>
+            <span class="trust-item">Guide price only</span>
           </div>
 
           <div class="hero-highlights" aria-label="Key valuation highlights">
@@ -851,12 +910,12 @@
               <span>Tell us the basics and get a guide price in under a minute.</span>
             </div>
             <div>
-              <strong>Built around your home</strong>
+              <strong>Shaped around your home</strong>
               <span>Size, condition, parking and outdoor space all shape the result.</span>
             </div>
             <div>
-              <strong>Instant price range</strong>
-              <span>See your guide price straight away, without waiting on a call back.</span>
+              <strong>See your range straight away</strong>
+              <span>View your guide price immediately, before deciding on a full valuation.</span>
             </div>
           </div>
         </div>
@@ -864,7 +923,7 @@
         <div class="hero-image" aria-hidden="true">
           <div class="hero-panel">
             <strong>Thinking of selling?</strong>
-            <span>Get a clearer idea of where your home could sit before booking a full valuation.</span>
+            <span>A helpful starting point before arranging a full in-person valuation with James Gorman Property.</span>
           </div>
         </div>
       </div>
@@ -985,7 +1044,7 @@
 
           <div class="submit-wrap">
             <button class="submit" type="submit">Get guide price</button>
-            <p class="helper">This is a guide price only. For a more accurate figure, James Gorman Property would need to view the property.</p>
+            <p class="helper">This is a guide price only. For a more accurate figure, James Gorman Property would need to see the property in person.</p>
           </div>
         </form>
 
@@ -997,7 +1056,7 @@
       <div class="card card--results">
         <div class="card-header">
           <h2>Your guide price</h2>
-          <p class="lead">Your result updates as you change the details, so you can see how different features affect the guide price.</p>
+          <p class="lead">Your result updates as you change the details, so you can see how different features shape the guide price.</p>
         </div>
 
         <div class="result-band" aria-live="polite">
@@ -1036,7 +1095,7 @@
         </div>
 
         <div class="footnote">
-          This gives you a quick guide price, not a formal valuation.
+          This gives you a quick guide price, not a formal valuation. Presentation, finish and recent comparable sales can still influence the final figure.
         </div>
       </div>
     </section>
