@@ -245,6 +245,68 @@
       margin-top: 2px;
     }
 
+    .hero-snapshot {
+      display: grid;
+      gap: 6px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(20, 18, 16, 0.92), rgba(52, 41, 30, 0.86));
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 42px rgba(20, 15, 10, 0.16);
+    }
+
+    .hero-snapshot-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero-snapshot-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.16);
+    }
+
+    .hero-snapshot strong {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.7vw, 2.8rem);
+      font-weight: 600;
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-snapshot span {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .hero-snapshot a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-top: 2px;
+      color: #f1d6a5;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .hero-snapshot a::after {
+      content: "↘";
+      font-size: 0.95em;
+    }
+
     .hero-cta {
       display: inline-flex;
       align-items: center;
@@ -379,6 +441,11 @@
       align-items: start;
     }
 
+    #valuationForm,
+    #guidePrice {
+      scroll-margin-top: 22px;
+    }
+
     .card {
       background: var(--panel);
       border: 1px solid rgba(255, 255, 255, 0.55);
@@ -406,6 +473,7 @@
       color: var(--muted);
       line-height: 1.68;
       max-width: 58ch;
+      overflow-wrap: anywhere;
     }
 
     .form-section + .form-section {
@@ -649,6 +717,7 @@
       color: rgba(255, 255, 255, 0.78);
       line-height: 1.7;
       font-size: 0.98rem;
+      overflow-wrap: anywhere;
     }
 
     .stats-head {
@@ -787,21 +856,39 @@
 
     @media (max-width: 640px) {
       .page {
+        padding-top: 18px;
         padding-inline: 14px;
         padding-bottom: 52px;
       }
 
       .brandbar {
+        gap: 12px;
         align-items: flex-start;
         flex-direction: column;
+        margin-bottom: 14px;
+        padding: 12px 14px;
+        border-radius: 20px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.98rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.84rem;
       }
 
       .brand-pill {
-        width: 100%;
-        justify-content: flex-start;
-        font-size: 0.8rem;
-        line-height: 1.35;
-        white-space: normal;
+        display: none;
       }
 
       .hero {
@@ -814,27 +901,36 @@
       }
 
       .hero-image {
-        min-height: 280px;
-        background-position: center center;
+        order: -1;
+        min-height: clamp(300px, 50svh, 390px);
+        background-position: 54% center;
       }
 
       .hero-copy {
-        margin: 14px 14px 0;
+        position: relative;
+        z-index: 2;
+        gap: 12px;
+        margin: -124px 12px 0;
         border-radius: 24px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(250, 243, 235, 0.76));
         box-shadow: 0 18px 40px rgba(20, 15, 10, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.68);
         backdrop-filter: blur(12px);
-        padding: 24px 20px 22px;
+        padding: 18px 20px 16px;
+      }
+
+      .eyebrow {
+        display: none;
       }
 
       .hero-copy p {
-        font-size: 0.98rem;
+        display: none;
       }
 
       h1 {
         max-width: 100%;
-        font-size: clamp(2.05rem, 10vw, 2.85rem);
-        line-height: 0.98;
+        font-size: clamp(1.85rem, 8.8vw, 2.35rem);
+        line-height: 0.94;
       }
 
       .hero-actions {
@@ -847,20 +943,39 @@
       }
 
       .hero-trust {
-        flex-direction: column;
-        gap: 8px;
+        display: none;
+      }
+
+      .hero-snapshot {
+        gap: 4px;
+        padding: 12px 14px;
+        border-radius: 18px;
+      }
+
+      .hero-snapshot strong {
+        font-size: clamp(1.75rem, 8.3vw, 2.25rem);
+      }
+
+      .hero-snapshot span,
+      .hero-snapshot a {
+        font-size: 0.88rem;
       }
 
       .hero-panel {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-        max-width: none;
+        display: none;
       }
 
       .card {
         padding: 22px 18px;
         border-radius: 24px;
+      }
+
+      .tool {
+        gap: 18px;
+      }
+
+      .card--results {
+        order: -1;
       }
 
       .grid,
@@ -871,11 +986,7 @@
       }
 
       .hero-highlights {
-        gap: 10px;
-      }
-
-      .hero-highlights div {
-        padding: 14px 14px 13px;
+        display: none;
       }
 
       .result-band {
@@ -920,6 +1031,13 @@
 
           <div class="hero-actions">
             <a class="hero-cta" href="#valuationForm">Get guide price</a>
+          </div>
+
+          <div class="hero-snapshot">
+            <div class="hero-snapshot-label">Live guide range</div>
+            <strong id="heroRange">£188,000 – £212,000</strong>
+            <span>Updates as you change the details below.</span>
+            <a href="#guidePrice">See live range</a>
           </div>
 
           <div class="hero-trust" aria-label="Valuation reassurance">
@@ -1077,7 +1195,7 @@
         </div>
       </div>
 
-      <div class="card card--results">
+      <div class="card card--results" id="guidePrice">
         <div class="card-header">
           <h2>Your guide price</h2>
           <p class="lead">Your result updates as you change the details, so you can see how different features shape the guide price.</p>
@@ -1127,6 +1245,7 @@
 
   <script>
     const refs = {
+      heroRange: document.getElementById('heroRange'),
       range: document.getElementById('range'),
       midpoint: document.getElementById('midpoint'),
       confidence: document.getElementById('confidence'),
@@ -1200,7 +1319,9 @@
       if (garage) summaryBits.push('garage');
       if (garden !== 'none') summaryBits.push(garden === 'family' ? 'family-sized garden' : 'outdoor space');
 
-      refs.range.textContent = `${currency(low)} – ${currency(high)}`;
+      const rangeText = `${currency(low)} – ${currency(high)}`;
+      refs.heroRange.textContent = rangeText;
+      refs.range.textContent = rangeText;
       refs.midpoint.textContent = currency(Math.round(midpoint / 1000) * 1000);
       refs.confidence.textContent = confidenceLabel(condition, extras, type);
       refs.spread.textContent = currency(high - low);
