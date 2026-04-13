@@ -3,214 +3,153 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>James Gorman Property, Instant Valuation Mockup</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>James Gorman Property | Instant Property Valuation</title>
+  <meta name="description" content="Indicative property valuation tool for James Gorman Property. Enter your property details to get an instant estimated price range." />
   <style>
     :root {
-      --bg: #0d1117;
-      --panel: rgba(255,255,255,0.06);
-      --panel-strong: rgba(255,255,255,0.1);
-      --navy: #1a2744;
-      --coral: #d4775c;
-      --gold: #c9a96e;
-      --cream: #f6efe7;
-      --text: #ffffff;
-      --muted: #c7ced6;
-      --line: rgba(255,255,255,0.12);
-      --success: #7cc48d;
-      --shadow: 0 24px 80px rgba(0,0,0,0.28);
-      --radius: 20px;
-      --font-display: 'Playfair Display', serif;
-      --font-body: 'DM Sans', sans-serif;
+      --bg: #f6f2ed;
+      --panel: #ffffff;
+      --ink: #101010;
+      --muted: #66625d;
+      --line: #e7dfd7;
+      --gold: #b89762;
+      --gold-dark: #a07f4a;
+      --shadow: 0 18px 50px rgba(16,16,16,0.08);
+      --radius: 22px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: var(--font-body);
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(201,169,110,0.16), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(212,119,92,0.14), transparent 25%),
-        linear-gradient(135deg, #0d1117 0%, #121a29 45%, #1a2744 100%);
-      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fbf8f4 0%, #f2ece5 100%);
     }
 
-    .shell {
-      max-width: 1280px;
+    .page {
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 32px 20px 64px;
+      padding: 28px 18px 64px;
     }
 
-    .topbar {
+    .brandbar {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
       gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .brand {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      letter-spacing: 0.02em;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: stretch;
       margin-bottom: 28px;
     }
 
-    .hero-copy,
-    .hero-proof,
-    .tool-panel,
-    .result-panel,
-    .notes-panel {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1.02rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 2px;
+    }
+
+    .hero {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      backdrop-filter: blur(22px);
+      border-radius: 32px;
+      overflow: hidden;
       box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 280px;
     }
 
     .hero-copy {
-      padding: 40px;
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,243,237,0.98));
     }
 
     .eyebrow {
-      display: inline-block;
-      color: var(--gold);
-      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      letter-spacing: 0.16em;
+      color: var(--gold-dark);
+      font-size: 0.78rem;
       font-weight: 700;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-display);
-      margin: 0;
-      line-height: 1.06;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      margin-bottom: 18px;
+      font-size: clamp(2.2rem, 4.5vw, 4.4rem);
+      line-height: 0.95;
+      margin: 0 0 16px;
+      letter-spacing: -0.045em;
       max-width: 10ch;
     }
 
     .hero-copy p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 62ch;
-      margin: 0 0 24px;
-    }
-
-    .bullet-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .bullet {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #f1f3f6;
-      font-size: 0.95rem;
-    }
-
-    .hero-proof {
-      padding: 28px;
-      display: grid;
-      gap: 18px;
-      align-content: center;
-    }
-
-    .proof-card {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .proof-label {
-      color: var(--gold);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .proof-value {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .proof-card p {
       margin: 0;
+      max-width: 52ch;
       color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
+      font-size: 1.02rem;
+      line-height: 1.7;
     }
 
-    .workspace {
+    .hero-image {
+      background-image:
+        linear-gradient(180deg, rgba(16,16,16,0.1), rgba(16,16,16,0.18)),
+        url('https://static.wixstatic.com/media/8a0a22_ce12064411c048d59fa5ed7c5aafbb6c~mv2.png/v1/fill/w_1400,h_900,al_c,q_90,enc_avif,quality_auto/Untitled%20design%20(17).png');
+      background-size: cover;
+      background-position: center;
+      min-height: 280px;
+    }
+
+    .tool {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 28px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
       align-items: start;
     }
 
-    .tool-panel,
-    .result-panel,
-    .notes-panel {
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .panel-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 24px;
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
     }
 
-    .panel-head p {
-      margin: 10px 0 0;
+    .card p.lead {
+      margin: 0 0 22px;
       color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .mock-badge {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(201,169,110,0.12);
-      border: 1px solid rgba(201,169,110,0.3);
-      color: #f6d9a6;
-      font-size: 0.82rem;
-      white-space: nowrap;
+      line-height: 1.65;
     }
 
     .grid {
@@ -229,301 +168,207 @@
     }
 
     label {
-      color: #f5f7fa;
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       font-weight: 600;
     }
 
     input,
-    select,
-    textarea {
+    select {
       width: 100%;
-      padding: 14px 15px;
+      border: 1px solid var(--line);
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
+      padding: 14px 15px;
       font: inherit;
+      background: #fff;
+      color: var(--ink);
       outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-
-    textarea { min-height: 120px; resize: vertical; }
 
     input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: rgba(212,119,92,0.8);
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-1px);
+    select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184,151,98,0.14);
     }
 
-    option { color: #10151d; }
-
-    .checkbox-grid {
+    .checks {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: 10px;
     }
 
     .check {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 14px;
+      border: 1px solid var(--line);
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.04);
+      padding: 13px 14px;
+      background: #fcfaf7;
+      font-size: 0.95rem;
     }
 
-    .check input {
-      width: 18px;
-      height: 18px;
-      margin: 0;
-    }
+    .check input { width: 16px; height: 16px; }
 
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    button {
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      padding: 15px 18px;
-      border-radius: 14px;
+    .submit {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 16px;
+      padding: 16px 18px;
+      background: linear-gradient(135deg, var(--gold) 0%, #d2b17a 100%);
+      color: white;
       font: inherit;
       font-weight: 700;
-      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(184,151,98,0.26);
     }
 
-    button:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--coral) 0%, var(--gold) 100%);
+    .result-band {
+      border-radius: 20px;
+      padding: 24px;
+      background: linear-gradient(135deg, #111 0%, #2a2a2a 100%);
       color: white;
-      box-shadow: 0 12px 30px rgba(212,119,92,0.28);
-      flex: 1;
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: white;
-    }
-
-    .range-band {
-      padding: 22px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(212,119,92,0.18), rgba(201,169,110,0.18));
-      border: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 18px;
     }
 
-    .range-band .mini {
-      color: rgba(255,255,255,0.8);
+    .result-band small {
+      display: block;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      opacity: 0.72;
       margin-bottom: 8px;
       font-weight: 700;
     }
 
-    .range-value {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.25rem);
+    .price {
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
       margin-bottom: 10px;
+      font-weight: 800;
     }
 
-    .range-sub {
-      color: var(--muted);
-      line-height: 1.6;
+    .sub {
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      font-size: 0.98rem;
     }
 
-    .stat-row {
+    .mini-stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    .stat {
-      padding: 16px;
+    .mini {
+      border: 1px solid var(--line);
       border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      background: #fcfaf7;
     }
 
-    .stat strong {
+    .mini strong {
       display: block;
-      font-size: 1.25rem;
+      font-size: 1.12rem;
       margin-bottom: 4px;
     }
 
-    .stat span {
+    .mini span {
       color: var(--muted);
       font-size: 0.9rem;
     }
 
-    .insight-list,
-    .follow-list,
-    .filter-list {
-      display: grid;
-      gap: 12px;
+    .bullets {
       margin: 0;
-      padding: 0;
-      list-style: none;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
-    .insight-list li,
-    .follow-list li,
-    .filter-list li {
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #eef2f7;
-      line-height: 1.6;
-    }
-
-    .lead-box {
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(124,196,141,0.08);
-      border: 1px solid rgba(124,196,141,0.22);
-    }
-
-    .lead-box strong {
-      display: block;
-      color: #dff7e6;
-      margin-bottom: 8px;
-    }
-
-    .lead-box p {
-      margin: 0;
-      color: #d7e5db;
-      line-height: 1.6;
-    }
-
-    .notes-panel {
-      margin-top: 28px;
-    }
-
-    .notes-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .notes-grid h3 {
-      margin-bottom: 12px;
-    }
-
-    .footer-note {
+    .footnote {
       margin-top: 18px;
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.7;
     }
 
-    @media (max-width: 980px) {
-      .hero,
-      .workspace,
-      .notes-grid {
-        grid-template-columns: 1fr;
-      }
+    .tiny {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.65;
     }
 
-    @media (max-width: 720px) {
-      .shell { padding-inline: 16px; }
+    @media (max-width: 920px) {
+      .hero-grid,
+      .tool {
+        grid-template-columns: 1fr;
+      }
+      .hero-image { min-height: 220px; }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding-inline: 14px; }
       .hero-copy,
-      .hero-proof,
-      .tool-panel,
-      .result-panel,
-      .notes-panel { padding: 22px; }
+      .card { padding: 22px; }
       .grid,
-      .checkbox-grid,
-      .stat-row { grid-template-columns: 1fr; }
-      .topbar { flex-direction: column; align-items: flex-start; }
+      .checks,
+      .mini-stats { grid-template-columns: 1fr; }
+      .brandbar { align-items: flex-start; }
       h1 { max-width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="topbar">
-      <div class="brand">James Gorman Property</div>
-      <div class="tag">Mock seller lead tool, valuation estimator + callback capture</div>
+  <div class="page">
+    <div class="brandbar">
+      <div class="brand">
+        <img src="https://static.wixstatic.com/media/8a0a22_3307ced7e9c148608dc28867e5630c3b~mv2.png/v1/fill/w_200,h_200,al_c,q_85,enc_avif,quality_auto/James%20Gorman-003.png" alt="James Gorman" />
+        <div class="brand-copy">
+          <strong>James Gorman Property</strong>
+          <span>Local Homes, Modern Marketing.</span>
+        </div>
+      </div>
     </div>
 
     <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">JGP mockup concept</div>
-        <h1>Free valuation tool with proper seller intent baked in.</h1>
-        <p>
-          This is a mockup for a lead hook James can use on site, in ads, and across local SEO pages.
-          It gives the visitor a fast estimated range, then turns that curiosity into a proper valuation request.
-        </p>
-        <div class="bullet-row">
-          <div class="bullet">Postcode + local area weighting</div>
-          <div class="bullet">Bedrooms, bathrooms, property type</div>
-          <div class="bullet">Garage, parking, garden, extension</div>
-          <div class="bullet">Condition + seller timeline</div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Indicative property valuation</div>
+          <h1>Find out what your home could be worth.</h1>
+          <p>
+            Enter a few details about your property and get an instant indicative price range based on area, size,
+            condition and key selling features.
+          </p>
         </div>
-      </div>
-
-      <div class="hero-proof">
-        <div class="proof-card">
-          <div class="proof-label">Why this works</div>
-          <div class="proof-value">Low friction first</div>
-          <p>People get a quick answer before being asked for full valuation details. Better conversion than a dead contact form.</p>
-        </div>
-        <div class="proof-card">
-          <div class="proof-label">Best use case</div>
-          <div class="proof-value">Seller lead hook</div>
-          <p>Best placed on a dedicated “Free Property Valuation Derry” page, then linked from homepage, sales pages, and local posts.</p>
-        </div>
-        <div class="proof-card">
-          <div class="proof-label">Next layer</div>
-          <div class="proof-value">Manual follow-up</div>
-          <p>James can use the estimate as the opener, then follow with a proper in-person or remote valuation.</p>
-        </div>
+        <div class="hero-image"></div>
       </div>
     </section>
 
-    <section class="workspace">
-      <div class="tool-panel">
-        <div class="panel-head">
-          <div>
-            <h2>Property details</h2>
-            <p>These are the filters I’d keep. Enough to feel useful, not so many that people bail.</p>
-          </div>
-          <div class="mock-badge">Interactive mockup</div>
-        </div>
+    <section class="tool">
+      <div class="card">
+        <h2>Property details</h2>
+        <p class="lead">Answer the core housing questions, then the tool returns an indicative valuation range.</p>
 
         <form id="valuationForm">
           <div class="grid">
             <div class="field">
-              <label for="postcode">Postcode district</label>
-              <select id="postcode" name="postcode">
+              <label for="postcode">Postcode</label>
+              <select id="postcode">
                 <option value="BT47">BT47</option>
                 <option value="BT48" selected>BT48</option>
                 <option value="BT49">BT49</option>
-                <option value="BT45">BT45</option>
-                <option value="BT46">BT46</option>
                 <option value="BT51">BT51</option>
+                <option value="BT82">BT82</option>
               </select>
             </div>
-
             <div class="field">
-              <label for="area">Area / town</label>
-              <select id="area" name="area">
-                <option value="Derry Cityside">Derry Cityside</option>
+              <label for="area">Area</label>
+              <select id="area">
                 <option value="Waterside" selected>Waterside</option>
+                <option value="Cityside">Cityside</option>
                 <option value="Culmore">Culmore</option>
                 <option value="Eglinton">Eglinton</option>
                 <option value="Strathfoyle">Strathfoyle</option>
@@ -532,390 +377,195 @@
                 <option value="Limavady">Limavady</option>
               </select>
             </div>
-
             <div class="field">
-              <label for="propertyType">Property type</label>
-              <select id="propertyType" name="propertyType">
+              <label for="type">Property type</label>
+              <select id="type">
                 <option value="detached">Detached</option>
                 <option value="semi" selected>Semi-detached</option>
-                <option value="terrace">Terrace / townhouse</option>
+                <option value="terrace">Terrace</option>
                 <option value="bungalow">Bungalow</option>
                 <option value="apartment">Apartment</option>
               </select>
             </div>
-
             <div class="field">
               <label for="bedrooms">Bedrooms</label>
-              <select id="bedrooms" name="bedrooms">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3" selected>3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+              <select id="bedrooms">
+                <option>1</option>
+                <option>2</option>
+                <option selected>3</option>
+                <option>4</option>
+                <option>5</option>
                 <option value="6">6+</option>
               </select>
             </div>
-
             <div class="field">
               <label for="bathrooms">Bathrooms</label>
-              <select id="bathrooms" name="bathrooms">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
+              <select id="bathrooms">
+                <option selected>1</option>
+                <option>2</option>
                 <option value="3">3+</option>
               </select>
             </div>
-
             <div class="field">
-              <label for="receptions">Reception rooms</label>
-              <select id="receptions" name="receptions">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3+</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="condition">Overall condition</label>
-              <select id="condition" name="condition">
+              <label for="condition">Condition</label>
+              <select id="condition">
                 <option value="needs-work">Needs modernisation</option>
                 <option value="good" selected>Good condition</option>
                 <option value="modernised">Recently modernised</option>
                 <option value="premium">Premium finish</option>
               </select>
             </div>
-
             <div class="field">
               <label for="parking">Parking</label>
-              <select id="parking" name="parking">
+              <select id="parking">
                 <option value="none">On-street only</option>
                 <option value="driveway" selected>Driveway</option>
-                <option value="multi">Driveway for 2+</option>
+                <option value="multiple">Driveway for 2+</option>
               </select>
             </div>
-
             <div class="field">
-              <label for="garden">Garden size</label>
-              <select id="garden" name="garden">
+              <label for="garden">Outdoor space</label>
+              <select id="garden">
                 <option value="none">None / yard only</option>
-                <option value="small">Small rear garden</option>
+                <option value="small">Small garden</option>
                 <option value="family" selected>Family-sized garden</option>
                 <option value="large">Large plot</option>
               </select>
             </div>
-
-            <div class="field">
-              <label for="timeline">Selling timeline</label>
-              <select id="timeline" name="timeline">
-                <option value="exploring" selected>Just exploring</option>
-                <option value="3months">Within 3 months</option>
-                <option value="6months">Within 6 months</option>
-                <option value="ready">Ready to move now</option>
-              </select>
-            </div>
-
             <div class="field full">
-              <label>Value-boosting extras</label>
-              <div class="checkbox-grid">
-                <label class="check"><input type="checkbox" id="garage" checked> Garage</label>
-                <label class="check"><input type="checkbox" id="extension"> Extension / sun room</label>
-                <label class="check"><input type="checkbox" id="renovatedKitchen" checked> Modern kitchen</label>
-                <label class="check"><input type="checkbox" id="homeOffice"> Home office or converted space</label>
+              <label>Extra features</label>
+              <div class="checks">
+                <label class="check"><input type="checkbox" id="garage" checked /> Garage</label>
+                <label class="check"><input type="checkbox" id="extension" /> Extension</label>
+                <label class="check"><input type="checkbox" id="kitchen" checked /> Modern kitchen</label>
+                <label class="check"><input type="checkbox" id="office" /> Home office</label>
               </div>
             </div>
-
-            <div class="field full">
-              <label for="contactName">Lead capture, name</label>
-              <input id="contactName" name="contactName" type="text" placeholder="Phil Patterson" />
-            </div>
-
-            <div class="field">
-              <label for="contactEmail">Email</label>
-              <input id="contactEmail" name="contactEmail" type="email" placeholder="you@example.com" />
-            </div>
-
-            <div class="field">
-              <label for="contactPhone">Phone</label>
-              <input id="contactPhone" name="contactPhone" type="tel" placeholder="07xxx xxxxxx" />
-            </div>
           </div>
 
-          <div class="actions">
-            <button type="submit" class="btn-primary">Calculate my mock valuation</button>
-            <button type="button" class="btn-secondary" id="resetBtn">Reset</button>
-          </div>
+          <button class="submit" type="submit">Get indicative price</button>
         </form>
+
+        <div class="tiny">
+          Mockup only. This is a concept page to show how the engine could work on James Gorman Property.
+        </div>
       </div>
 
-      <div class="result-panel">
-        <div class="panel-head">
-          <div>
-            <h2>Your estimated range</h2>
-            <p>This is where the page becomes useful, then hands off to James for the real-world valuation.</p>
-          </div>
+      <div class="card">
+        <h2>Indicative valuation</h2>
+        <p class="lead">The result updates instantly based on the property profile entered.</p>
+
+        <div class="result-band">
+          <small>Estimated range</small>
+          <div class="price" id="range">£188,000 – £212,000</div>
+          <div class="sub" id="summary">3-bed semi-detached home in Waterside, good condition, driveway, garage and family-sized garden.</div>
         </div>
 
-        <div class="range-band">
-          <div class="mini">Estimated valuation band</div>
-          <div class="range-value" id="valuationRange">£188,000 – £212,000</div>
-          <div class="range-sub" id="rangeSub">Based on a 3-bed semi-detached home in Waterside, good condition, driveway and garage.</div>
-        </div>
-
-        <div class="stat-row">
-          <div class="stat">
-            <strong id="midpointValue">£200,000</strong>
+        <div class="mini-stats">
+          <div class="mini">
+            <strong id="midpoint">£200,000</strong>
             <span>Midpoint estimate</span>
           </div>
-          <div class="stat">
-            <strong id="confidenceValue">Medium</strong>
-            <span>Confidence band</span>
-          </div>
-          <div class="stat">
-            <strong id="timelineValue">24 hrs</strong>
-            <span>James callback target</span>
+          <div class="mini">
+            <strong id="confidence">Medium</strong>
+            <span>Confidence range</span>
           </div>
         </div>
 
-        <h3 style="margin-bottom: 12px;">What’s driving the estimate</h3>
-        <ul class="insight-list" id="insightList">
-          <li>Waterside remains a strong family-market area, especially for tidy 3-bed stock.</li>
-          <li>Garage, driveway and a family-sized garden all strengthen buyer appeal.</li>
-          <li>Condition still matters massively, modern kitchens and turnkey presentation usually tighten the top end.</li>
+        <ul class="bullets" id="drivers">
+          <li>Waterside family homes remain one of the strongest local seller segments.</li>
+          <li>Garage, driveway and outdoor space all support the upper end of the range.</li>
+          <li>Condition has a big impact on pricing confidence and buyer demand.</li>
         </ul>
 
-        <div class="lead-box">
-          <strong>Best lead flow for James</strong>
-          <p id="leadMessage">Show the range first, then offer a more accurate in-person valuation with local advice on presentation, pricing and timing.</p>
+        <div class="footnote">
+          This tool is designed to give an instant indicative range, not a formal survey valuation.
         </div>
       </div>
-    </section>
-
-    <section class="notes-panel">
-      <div class="panel-head">
-        <div>
-          <h2>Filters I’d keep</h2>
-          <p>Enough detail to feel credible, but not enough to turn it into homework.</p>
-        </div>
-      </div>
-      <div class="notes-grid">
-        <div>
-          <h3>Core fields</h3>
-          <ul class="filter-list">
-            <li>Postcode district or area</li>
-            <li>Property type</li>
-            <li>Bedrooms and bathrooms</li>
-            <li>Condition</li>
-            <li>Parking / garage</li>
-            <li>Garden / outside space</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Smart conversion fields</h3>
-          <ul class="follow-list">
-            <li>Selling timeline, this tells James who is warm now.</li>
-            <li>Extension / modern kitchen / office, quick signals for value uplift.</li>
-            <li>Name, phone, email only after the range appears.</li>
-            <li>Optional next step: “Book a proper valuation” calendar or callback CTA.</li>
-          </ul>
-        </div>
-      </div>
-      <p class="footer-note">
-        Mockup note: this should stay clearly framed as an estimate until backed by real local sold-price logic or James’s own comparable data.
-        The page should sell confidence and speed, not pretend to be a formal survey.
-      </p>
     </section>
   </div>
 
   <script>
-    const form = document.getElementById('valuationForm');
-    const resetBtn = document.getElementById('resetBtn');
-
     const refs = {
-      range: document.getElementById('valuationRange'),
-      sub: document.getElementById('rangeSub'),
-      midpoint: document.getElementById('midpointValue'),
-      confidence: document.getElementById('confidenceValue'),
-      timeline: document.getElementById('timelineValue'),
-      insights: document.getElementById('insightList'),
-      leadMessage: document.getElementById('leadMessage')
+      range: document.getElementById('range'),
+      midpoint: document.getElementById('midpoint'),
+      confidence: document.getElementById('confidence'),
+      summary: document.getElementById('summary'),
+      drivers: document.getElementById('drivers')
     };
 
-    const postcodeBase = {
-      BT47: 172000,
-      BT48: 185000,
-      BT49: 176000,
-      BT45: 168000,
-      BT46: 166000,
-      BT51: 174000
-    };
+    const baseByPostcode = { BT47: 172000, BT48: 184000, BT49: 176000, BT51: 178000, BT82: 169000 };
+    const areaAdjust = { Waterside: 9000, Cityside: 5000, Culmore: 18000, Eglinton: 14000, Strathfoyle: 3000, Claudy: 7000, Dungiven: 5000, Limavady: 10000 };
+    const typeAdjust = { detached: 80000, semi: 32000, terrace: 12000, bungalow: 56000, apartment: -18000 };
+    const conditionAdjust = { 'needs-work': -18000, good: 0, modernised: 14000, premium: 28000 };
+    const parkingAdjust = { none: 0, driveway: 6000, multiple: 10000 };
+    const gardenAdjust = { none: -5000, small: 0, family: 7000, large: 14000 };
 
-    const areaAdjust = {
-      'Derry Cityside': 6000,
-      'Waterside': 9000,
-      'Culmore': 18000,
-      'Eglinton': 14000,
-      'Strathfoyle': 3000,
-      'Claudy': 8000,
-      'Dungiven': 5000,
-      'Limavady': 10000
-    };
-
-    const typeAdjust = {
-      detached: 82000,
-      semi: 32000,
-      terrace: 12000,
-      bungalow: 58000,
-      apartment: -18000
-    };
-
-    const conditionAdjust = {
-      'needs-work': -18000,
-      good: 0,
-      modernised: 14000,
-      premium: 28000
-    };
-
-    const parkingAdjust = {
-      none: 0,
-      driveway: 6000,
-      multi: 10000
-    };
-
-    const gardenAdjust = {
-      none: -5000,
-      small: 0,
-      family: 7000,
-      large: 14000
-    };
-
-    function currency(value) {
-      return new Intl.NumberFormat('en-GB', {
-        style: 'currency',
-        currency: 'GBP',
-        maximumFractionDigits: 0
-      }).format(value);
+    function currency(v) {
+      return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(v);
     }
 
-    function getConfidence(condition, extrasCount, propertyType) {
-      if (condition === 'premium' || propertyType === 'apartment') return 'Medium';
-      if (extrasCount >= 3) return 'Medium-High';
-      return 'Medium';
-    }
+    function calculate(e) {
+      if (e) e.preventDefault();
 
-    function getTimelineCopy(timeline) {
-      return {
-        exploring: '24 hrs',
-        '3months': 'Same day',
-        '6months': '24 hrs',
-        ready: 'Same day'
-      }[timeline] || '24 hrs';
-    }
+      const postcode = document.getElementById('postcode').value;
+      const area = document.getElementById('area').value;
+      const type = document.getElementById('type').value;
+      const bedrooms = Number(document.getElementById('bedrooms').value);
+      const bathrooms = Number(document.getElementById('bathrooms').value);
+      const condition = document.getElementById('condition').value;
+      const parking = document.getElementById('parking').value;
+      const garden = document.getElementById('garden').value;
+      const garage = document.getElementById('garage').checked;
+      const extension = document.getElementById('extension').checked;
+      const kitchen = document.getElementById('kitchen').checked;
+      const office = document.getElementById('office').checked;
 
-    function buildInsights(data) {
-      const list = [];
-      list.push(`${data.area} carries a ${data.postcode} weighting, so local positioning matters more than generic NI averages.`);
+      let midpoint = (baseByPostcode[postcode] || 175000)
+        + (areaAdjust[area] || 0)
+        + (typeAdjust[type] || 0)
+        + ((bedrooms - 1) * 12000)
+        + ((bathrooms - 1) * 7000)
+        + (conditionAdjust[condition] || 0)
+        + (parkingAdjust[parking] || 0)
+        + (gardenAdjust[garden] || 0);
 
-      if (data.propertyType === 'detached') {
-        list.push('Detached homes usually win on space, parking and family appeal, especially when presentation is strong.');
-      } else if (data.propertyType === 'semi') {
-        list.push('Well-kept semi-detached homes often sit in the sweet spot for first movers and family buyers.');
-      } else if (data.propertyType === 'terrace') {
-        list.push('Terrace stock tends to be sensitive to finish, parking and outdoor space, so the condition input matters a lot.');
-      } else if (data.propertyType === 'bungalow') {
-        list.push('Bungalows often attract a wider age range, so layout and turnkey condition can really lift the top end.');
-      } else {
-        list.push('Apartments are usually judged harder on finish, service costs and exact location, so the range stays a bit wider.');
-      }
+      if (garage) midpoint += 9000;
+      if (extension) midpoint += 18000;
+      if (kitchen) midpoint += 8000;
+      if (office) midpoint += 7000;
 
-      if (data.garage || data.extension || data.renovatedKitchen || data.homeOffice) {
-        const extras = [];
-        if (data.garage) extras.push('garage');
-        if (data.extension) extras.push('extension');
-        if (data.renovatedKitchen) extras.push('modern kitchen');
-        if (data.homeOffice) extras.push('home office');
-        list.push(`Value-supporting extras in this mockup: ${extras.join(', ')}.`);
-      } else {
-        list.push('Without obvious value-boosting extras selected, this estimate leans more on location, size and general condition.');
-      }
-
-      return list;
-    }
-
-    function leadCopy(timeline) {
-      if (timeline === 'ready') return 'Strong CTA here: “You look ready to move, book a same-day valuation with James.”';
-      if (timeline === '3months') return 'Good nurture CTA: “Thinking of selling this season? James can tighten this estimate with local comps.”';
-      return 'Keep the next step soft: offer a callback, a full valuation, and a few local pricing tips instead of pushing too hard.';
-    }
-
-    function calculate(event) {
-      if (event) event.preventDefault();
-
-      const data = {
-        postcode: form.postcode.value,
-        area: form.area.value,
-        propertyType: form.propertyType.value,
-        bedrooms: Number(form.bedrooms.value),
-        bathrooms: Number(form.bathrooms.value),
-        receptions: Number(form.receptions.value),
-        condition: form.condition.value,
-        parking: form.parking.value,
-        garden: form.garden.value,
-        timeline: form.timeline.value,
-        garage: form.garage.checked,
-        extension: form.extension.checked,
-        renovatedKitchen: form.renovatedKitchen.checked,
-        homeOffice: form.homeOffice.checked
-      };
-
-      let midpoint = postcodeBase[data.postcode] || 175000;
-      midpoint += areaAdjust[data.area] || 0;
-      midpoint += typeAdjust[data.propertyType] || 0;
-      midpoint += (data.bedrooms - 1) * 12000;
-      midpoint += (data.bathrooms - 1) * 7000;
-      midpoint += (data.receptions - 1) * 5000;
-      midpoint += conditionAdjust[data.condition] || 0;
-      midpoint += parkingAdjust[data.parking] || 0;
-      midpoint += gardenAdjust[data.garden] || 0;
-      if (data.garage) midpoint += 9000;
-      if (data.extension) midpoint += 18000;
-      if (data.renovatedKitchen) midpoint += 8000;
-      if (data.homeOffice) midpoint += 7000;
-
-      const extrasCount = [data.garage, data.extension, data.renovatedKitchen, data.homeOffice].filter(Boolean).length;
-      const spread = 12000 + extrasCount * 2000 + (data.condition === 'needs-work' ? 6000 : 0) + (data.propertyType === 'apartment' ? 4000 : 0);
+      const extras = [garage, extension, kitchen, office].filter(Boolean).length;
+      const spread = 13000 + (extras * 2000) + (condition === 'needs-work' ? 5000 : 0);
       const low = Math.round((midpoint - spread) / 1000) * 1000;
       const high = Math.round((midpoint + spread) / 1000) * 1000;
 
       refs.range.textContent = `${currency(low)} – ${currency(high)}`;
-      refs.sub.textContent = `Based on a ${data.bedrooms}-bed ${data.propertyType.replace('-', ' ')} home in ${data.area}, ${data.condition.replace('-', ' ')} condition.`;
       refs.midpoint.textContent = currency(Math.round(midpoint / 1000) * 1000);
-      refs.confidence.textContent = getConfidence(data.condition, extrasCount, data.propertyType);
-      refs.timeline.textContent = getTimelineCopy(data.timeline);
-      refs.leadMessage.textContent = leadCopy(data.timeline);
+      refs.confidence.textContent = (condition === 'premium' || extras >= 3) ? 'Medium-high' : 'Medium';
+      refs.summary.textContent = `${bedrooms}-bed ${type.replace('-', ' ')} home in ${area}, ${condition.replace('-', ' ')} condition${garage ? ', garage' : ''}${parking !== 'none' ? ', parking' : ''}${garden !== 'none' ? ', outdoor space' : ''}.`;
 
-      const insights = buildInsights(data).map(item => `<li>${item}</li>`).join('');
-      refs.insights.innerHTML = insights;
+      const lines = [];
+      lines.push(`${area} gives the estimate its biggest local weighting.`);
+      if (type === 'detached') lines.push('Detached homes tend to command a stronger premium where condition is solid.');
+      else if (type === 'semi') lines.push('Semi-detached homes sit in a strong family buyer bracket across the North West.');
+      else if (type === 'terrace') lines.push('Terraced pricing is more sensitive to finish, parking and exact micro-location.');
+      else if (type === 'bungalow') lines.push('Bungalows usually benefit from scarcity and broad buyer appeal.');
+      else lines.push('Apartments depend more heavily on exact location and finish, so the range stays wider.');
+      if (garage || extension || kitchen || office) {
+        const picked = [];
+        if (garage) picked.push('garage');
+        if (extension) picked.push('extension');
+        if (kitchen) picked.push('modern kitchen');
+        if (office) picked.push('home office');
+        lines.push(`Extra value signals selected: ${picked.join(', ')}.`);
+      } else {
+        lines.push('Without extra value signals selected, the estimate leans mainly on area, size and condition.');
+      }
+      refs.drivers.innerHTML = lines.map(line => `<li>${line}</li>`).join('');
     }
 
-    form.addEventListener('submit', calculate);
-    resetBtn.addEventListener('click', () => {
-      form.reset();
-      form.postcode.value = 'BT48';
-      form.area.value = 'Waterside';
-      form.propertyType.value = 'semi';
-      form.bedrooms.value = '3';
-      form.bathrooms.value = '1';
-      form.receptions.value = '1';
-      form.condition.value = 'good';
-      form.parking.value = 'driveway';
-      form.garden.value = 'family';
-      form.timeline.value = 'exploring';
-      form.garage.checked = true;
-      form.extension.checked = false;
-      form.renovatedKitchen.checked = true;
-      form.homeOffice.checked = false;
-      calculate();
-    });
-
+    document.getElementById('valuationForm').addEventListener('submit', calculate);
     calculate();
   </script>
 </body>
