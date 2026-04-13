@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Gorman Property | Instant Property Valuation</title>
   <meta name="description" content="Get an instant guide price range for your property with James Gorman Property." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f6f1ea;
@@ -19,8 +22,10 @@
       --gold-dark: #9d7a44;
       --gold-soft: rgba(184, 151, 98, 0.12);
       --shadow-soft: 0 18px 50px rgba(20, 15, 10, 0.08);
-      --shadow-card: 0 22px 60px rgba(20, 15, 10, 0.11);
+      --shadow-card: 0 28px 80px rgba(20, 15, 10, 0.12);
       --shadow-press: 0 12px 24px rgba(157, 122, 68, 0.22);
+      --font-sans: "Manrope", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-serif: "Cormorant Garamond", Georgia, serif;
       --radius-xl: 32px;
       --radius-lg: 24px;
       --radius-md: 18px;
@@ -38,7 +43,7 @@
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: var(--font-sans);
       color: var(--ink);
       background:
         radial-gradient(circle at top left, rgba(184, 151, 98, 0.16), transparent 26%),
@@ -64,12 +69,12 @@
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 28px;
-      padding: 14px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.52);
+      padding: 16px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.56);
       backdrop-filter: blur(14px);
-      box-shadow: 0 10px 30px rgba(20, 15, 10, 0.05);
+      box-shadow: 0 14px 36px rgba(20, 15, 10, 0.06);
     }
 
     .brand {
@@ -128,29 +133,34 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 36px;
+      border-radius: 40px;
       border: 1px solid rgba(255, 255, 255, 0.55);
       box-shadow: var(--shadow-card);
-      background: var(--panel-solid);
-      margin-bottom: 28px;
+      background: linear-gradient(180deg, #f6efe7 0%, #f3eadf 100%);
+      margin-bottom: 32px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
-      min-height: 420px;
+      grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
+      min-height: 520px;
     }
 
     .hero-copy {
       position: relative;
       z-index: 1;
-      padding: clamp(34px, 5vw, 60px);
+      margin: 26px 0 26px 26px;
+      padding: clamp(34px, 5vw, 56px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 18px;
+      border-radius: 32px;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(249, 243, 236, 0.96));
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 239, 229, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.52);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 22px 48px rgba(20, 15, 10, 0.08);
     }
 
     .eyebrow {
@@ -172,19 +182,21 @@
     h1 {
       margin: 0;
       padding-bottom: 0.08em;
-      font-size: clamp(2.5rem, 5vw, 4.8rem);
-      line-height: 1.03;
-      letter-spacing: -0.055em;
-      max-width: 11ch;
+      font-family: var(--font-serif);
+      font-size: clamp(3.3rem, 5.4vw, 5.4rem);
+      font-weight: 600;
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      max-width: 8.5ch;
       text-wrap: balance;
     }
 
     .hero-copy p {
       margin: 0;
-      max-width: 56ch;
+      max-width: 46ch;
       color: var(--muted);
-      font-size: 1.03rem;
-      line-height: 1.75;
+      font-size: 1rem;
+      line-height: 1.78;
     }
 
     .hero-actions {
@@ -228,15 +240,15 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 6px;
+      margin-top: 10px;
     }
 
     .hero-highlights div {
-      padding: 14px 16px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(184, 151, 98, 0.14);
-      box-shadow: 0 8px 24px rgba(20, 15, 10, 0.04);
+      padding: 16px 16px 15px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(184, 151, 98, 0.12);
+      box-shadow: 0 12px 28px rgba(20, 15, 10, 0.04);
     }
 
     .hero-highlights strong {
@@ -255,12 +267,12 @@
 
     .hero-image {
       position: relative;
-      min-height: 420px;
+      min-height: 520px;
       background-image:
-        linear-gradient(180deg, rgba(16, 16, 16, 0.04), rgba(16, 16, 16, 0.28)),
+        linear-gradient(180deg, rgba(18, 16, 14, 0.08), rgba(18, 16, 14, 0.34)),
         url('https://static.wixstatic.com/media/8a0a22_ce12064411c048d59fa5ed7c5aafbb6c~mv2.png/v1/fill/w_1400,h_900,al_c,q_90,enc_avif,quality_auto/Untitled%20design%20(17).png');
       background-size: cover;
-      background-position: center;
+      background-position: center center;
     }
 
     .hero-image::before {
@@ -268,23 +280,23 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(246, 241, 234, 0.2), transparent 34%),
-        linear-gradient(180deg, transparent 40%, rgba(16, 16, 16, 0.34) 100%);
+        linear-gradient(90deg, rgba(246, 241, 234, 0.14), transparent 28%),
+        linear-gradient(180deg, transparent 28%, rgba(16, 16, 16, 0.42) 100%);
     }
 
     .hero-panel {
       position: absolute;
-      right: 24px;
-      bottom: 24px;
+      right: 28px;
+      bottom: 28px;
       z-index: 1;
-      max-width: 280px;
-      padding: 18px 18px 16px;
-      border-radius: 20px;
+      max-width: 320px;
+      padding: 20px 20px 18px;
+      border-radius: 22px;
       color: white;
-      background: linear-gradient(145deg, rgba(14, 14, 14, 0.78), rgba(36, 30, 24, 0.84));
+      background: linear-gradient(145deg, rgba(14, 14, 14, 0.72), rgba(28, 24, 20, 0.82));
       border: 1px solid rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(14px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 22px 44px rgba(0, 0, 0, 0.18);
     }
 
     .hero-panel strong {
@@ -323,8 +335,11 @@
 
     .card h2 {
       margin: 0 0 8px;
-      font-size: clamp(1.55rem, 3vw, 2rem);
-      letter-spacing: -0.04em;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 0.98;
     }
 
     .card p.lead {
@@ -558,11 +573,12 @@
       position: relative;
       z-index: 1;
       padding-bottom: 0.04em;
-      font-size: clamp(2rem, 4vw, 3.45rem);
-      line-height: 1.08;
-      letter-spacing: -0.06em;
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 0.94;
+      letter-spacing: -0.045em;
       margin-bottom: 12px;
-      font-weight: 800;
+      font-weight: 600;
       text-wrap: balance;
       overflow-wrap: anywhere;
     }
@@ -679,13 +695,13 @@
         min-height: 0;
       }
 
-      .hero-image,
       .hero-copy {
+        margin: 24px 24px 0;
         min-height: 0;
       }
 
       .hero-image {
-        min-height: 320px;
+        min-height: 360px;
       }
 
       .card--results {
@@ -695,7 +711,7 @@
 
     @media (max-width: 840px) {
       .brandbar {
-        border-radius: 28px;
+        border-radius: 24px;
         padding: 16px;
       }
 
@@ -734,10 +750,15 @@
 
       .hero-image {
         order: -1;
-        min-height: 230px;
+        min-height: 250px;
       }
 
       .hero-copy {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: 0;
+        backdrop-filter: none;
         padding: 24px 20px 24px;
       }
 
@@ -807,17 +828,16 @@
           <span>Local Homes, Modern Marketing.</span>
         </div>
       </div>
-      <div class="brand-pill">North West homes, instant guide price</div>
+      <div class="brand-pill">Derry and North West homes, instant guide price</div>
     </div>
 
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">Indicative property valuation</div>
-          <h1>Find out what your home could be worth.</h1>
+          <h1>See what your home could be worth.</h1>
           <p>
-            Enter a few details about your home to get an instant guide price range based on the area, size,
-            condition and features.
+            Answer a few simple questions and get a quick guide price based on your area, your home, and the features buyers look for.
           </p>
 
           <div class="hero-actions">
@@ -827,16 +847,16 @@
 
           <div class="hero-highlights" aria-label="Key valuation highlights">
             <div>
-              <strong>Quick to complete</strong>
-              <span>Answer a few simple questions about your home.</span>
+              <strong>Quick and simple</strong>
+              <span>Tell us the basics and get a guide price in under a minute.</span>
             </div>
             <div>
-              <strong>Based on your details</strong>
-              <span>Bedrooms, condition, parking and outdoor space all matter.</span>
+              <strong>Built around your home</strong>
+              <span>Size, condition, parking and outdoor space all shape the result.</span>
             </div>
             <div>
-              <strong>Clear guide price</strong>
-              <span>See a price range straight away, with no waiting around.</span>
+              <strong>Instant price range</strong>
+              <span>See your guide price straight away, without waiting on a call back.</span>
             </div>
           </div>
         </div>
@@ -844,7 +864,7 @@
         <div class="hero-image" aria-hidden="true">
           <div class="hero-panel">
             <strong>Thinking of selling?</strong>
-            <span>Get a quick idea of what your home could be worth before arranging a full valuation.</span>
+            <span>Get a clearer idea of where your home could sit before booking a full valuation.</span>
           </div>
         </div>
       </div>
