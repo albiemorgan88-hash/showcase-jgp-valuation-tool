@@ -7,29 +7,55 @@
   <meta name="description" content="Indicative property valuation tool for James Gorman Property. Enter your property details to get an instant estimated price range." />
   <style>
     :root {
-      --bg: #f6f2ed;
-      --panel: #ffffff;
-      --ink: #101010;
-      --muted: #66625d;
-      --line: #e7dfd7;
+      --bg: #f6f1ea;
+      --bg-soft: #fbf8f4;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-solid: #ffffff;
+      --ink: #161412;
+      --muted: #6f685f;
+      --line: rgba(123, 104, 79, 0.16);
+      --line-strong: rgba(123, 104, 79, 0.26);
       --gold: #b89762;
-      --gold-dark: #a07f4a;
-      --shadow: 0 18px 50px rgba(16,16,16,0.08);
-      --radius: 22px;
+      --gold-dark: #9d7a44;
+      --gold-soft: rgba(184, 151, 98, 0.12);
+      --shadow-soft: 0 18px 50px rgba(20, 15, 10, 0.08);
+      --shadow-card: 0 22px 60px rgba(20, 15, 10, 0.11);
+      --shadow-press: 0 12px 24px rgba(157, 122, 68, 0.22);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --max: 1180px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behaviour: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
-      background: linear-gradient(180deg, #fbf8f4 0%, #f2ece5 100%);
+      background:
+        radial-gradient(circle at top left, rgba(184, 151, 98, 0.16), transparent 26%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.75), transparent 34%),
+        linear-gradient(180deg, #fbf8f4 0%, #f1e9df 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .page {
-      max-width: 1180px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 18px 64px;
+      padding: 28px 18px 72px;
     }
 
     .brandbar {
@@ -38,118 +64,289 @@
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 28px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.52);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(20, 15, 10, 0.05);
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
+      min-width: 0;
     }
 
     .brand img {
-      width: 50px;
-      height: 50px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #fff;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+      flex: none;
     }
 
     .brand-copy strong {
       display: block;
-      font-size: 1.02rem;
-      letter-spacing: 0.02em;
+      font-size: 1.04rem;
+      letter-spacing: 0.01em;
     }
 
     .brand-copy span {
       display: block;
       color: var(--muted);
-      font-size: 0.92rem;
-      margin-top: 2px;
+      font-size: 0.94rem;
+      margin-top: 3px;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      color: #5e4b2f;
+      font-size: 0.87rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .brand-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.12);
     }
 
     .hero {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 32px;
+      position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
+      border-radius: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: var(--shadow-card);
+      background: var(--panel-solid);
+      margin-bottom: 28px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      min-height: 280px;
+      grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+      min-height: 420px;
     }
 
     .hero-copy {
-      padding: 42px;
+      position: relative;
+      z-index: 1;
+      padding: clamp(34px, 5vw, 60px);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,243,237,0.98));
+      gap: 18px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(249, 243, 236, 0.96));
     }
 
     .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(184, 151, 98, 0.2);
+      background: rgba(184, 151, 98, 0.09);
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.15em;
       color: var(--gold-dark);
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 14px;
+      font-size: 0.76rem;
+      font-weight: 800;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 4.5vw, 4.4rem);
-      line-height: 0.95;
-      margin: 0 0 16px;
-      letter-spacing: -0.045em;
-      max-width: 10ch;
+      margin: 0;
+      padding-bottom: 0.08em;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+      max-width: 11ch;
+      text-wrap: balance;
     }
 
     .hero-copy p {
       margin: 0;
-      max-width: 52ch;
+      max-width: 56ch;
       color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.7;
+      font-size: 1.03rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .hero-cta,
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .hero-cta {
+      background: linear-gradient(135deg, var(--gold) 0%, #cfab72 100%);
+      color: white;
+      box-shadow: var(--shadow-press);
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(157, 122, 68, 0.28);
+    }
+
+    .hero-note {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font-size: 0.94rem;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .hero-highlights div {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(184, 151, 98, 0.14);
+      box-shadow: 0 8px 24px rgba(20, 15, 10, 0.04);
+    }
+
+    .hero-highlights strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-highlights span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
     }
 
     .hero-image {
+      position: relative;
+      min-height: 420px;
       background-image:
-        linear-gradient(180deg, rgba(16,16,16,0.1), rgba(16,16,16,0.18)),
+        linear-gradient(180deg, rgba(16, 16, 16, 0.04), rgba(16, 16, 16, 0.28)),
         url('https://static.wixstatic.com/media/8a0a22_ce12064411c048d59fa5ed7c5aafbb6c~mv2.png/v1/fill/w_1400,h_900,al_c,q_90,enc_avif,quality_auto/Untitled%20design%20(17).png');
       background-size: cover;
       background-position: center;
-      min-height: 280px;
+    }
+
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(246, 241, 234, 0.2), transparent 34%),
+        linear-gradient(180deg, transparent 40%, rgba(16, 16, 16, 0.34) 100%);
+    }
+
+    .hero-panel {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1;
+      max-width: 280px;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      color: white;
+      background: linear-gradient(145deg, rgba(14, 14, 14, 0.78), rgba(36, 30, 24, 0.84));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-panel strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-panel span {
+      display: block;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
 
     .tool {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+      gap: 26px;
       align-items: start;
     }
 
     .card {
       background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 28px;
+      padding: clamp(24px, 4vw, 34px);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+    }
+
+    .card-header {
+      margin-bottom: 26px;
     }
 
     .card h2 {
       margin: 0 0 8px;
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      letter-spacing: -0.04em;
     }
 
     .card p.lead {
-      margin: 0 0 22px;
+      margin: 0;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.68;
+      max-width: 58ch;
+    }
+
+    .form-section + .form-section {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(123, 104, 79, 0.12);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
     }
 
     .grid {
@@ -160,7 +357,8 @@
 
     .field {
       display: grid;
-      gap: 8px;
+      gap: 9px;
+      min-width: 0;
     }
 
     .field.full {
@@ -168,156 +366,428 @@
     }
 
     label {
-      font-size: 0.93rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     input,
     select {
       width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      min-height: 52px;
+      border: 1px solid rgba(123, 104, 79, 0.18);
+      border-radius: 16px;
       padding: 14px 15px;
       font: inherit;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.98);
       color: var(--ink);
       outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--gold-dark) 50%),
+        linear-gradient(135deg, var(--gold-dark) 50%, transparent 50%);
+      background-position:
+        calc(100% - 20px) calc(50% - 3px),
+        calc(100% - 14px) calc(50% - 3px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 42px;
     }
 
     input:focus,
-    select:focus {
+    select:focus,
+    .check:focus-within {
       border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(184,151,98,0.14);
+      box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.14);
     }
 
     .checks {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .check {
       display: flex;
       align-items: center;
-      gap: 10px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 13px 14px;
-      background: #fcfaf7;
-      font-size: 0.95rem;
+      gap: 12px;
+      min-height: 56px;
+      border: 1px solid rgba(123, 104, 79, 0.16);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, #fffdfa 0%, #faf5ee 100%);
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .check input { width: 16px; height: 16px; }
+    .check:hover {
+      transform: translateY(-1px);
+      border-color: rgba(184, 151, 98, 0.34);
+      box-shadow: 0 10px 24px rgba(20, 15, 10, 0.05);
+    }
+
+    .check input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--gold-dark);
+      flex: none;
+    }
+
+    .check span {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @supports(selector(:has(*))) {
+      .check:has(input:checked) {
+        border-color: rgba(184, 151, 98, 0.34);
+        background: linear-gradient(180deg, rgba(184, 151, 98, 0.12) 0%, rgba(255, 255, 255, 0.96) 100%);
+        box-shadow: 0 12px 28px rgba(20, 15, 10, 0.05);
+      }
+    }
+
+    .submit-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
 
     .submit {
       width: 100%;
-      margin-top: 20px;
+      min-height: 56px;
       border: 0;
-      border-radius: 16px;
-      padding: 16px 18px;
-      background: linear-gradient(135deg, var(--gold) 0%, #d2b17a 100%);
+      border-radius: 18px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--gold) 0%, #d3ae74 100%);
       color: white;
       font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 14px 30px rgba(184,151,98,0.26);
-    }
-
-    .result-band {
-      border-radius: 20px;
-      padding: 24px;
-      background: linear-gradient(135deg, #111 0%, #2a2a2a 100%);
-      color: white;
-      margin-bottom: 18px;
-    }
-
-    .result-band small {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      opacity: 0.72;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .price {
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      margin-bottom: 10px;
       font-weight: 800;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      box-shadow: var(--shadow-press);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
     }
 
-    .sub {
-      color: rgba(255,255,255,0.75);
-      line-height: 1.65;
-      font-size: 0.98rem;
+    .submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 30px rgba(157, 122, 68, 0.28);
+      filter: saturate(1.04);
     }
 
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
+    .submit:active {
+      transform: translateY(0);
     }
 
-    .mini {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      background: #fcfaf7;
-    }
-
-    .mini strong {
-      display: block;
-      font-size: 1.12rem;
-      margin-bottom: 4px;
-    }
-
-    .mini span {
+    .helper,
+    .tiny,
+    .footnote {
       color: var(--muted);
       font-size: 0.9rem;
+      line-height: 1.65;
     }
 
-    .bullets {
+    .helper {
       margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .footnote {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
     }
 
     .tiny {
       margin-top: 20px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.65;
+      font-size: 0.83rem;
     }
 
-    @media (max-width: 920px) {
+    .card--results {
+      position: sticky;
+      top: 24px;
+    }
+
+    .result-band {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 26px;
+      background: linear-gradient(145deg, #141210 0%, #2f2720 100%);
+      color: white;
+      margin-bottom: 18px;
+      box-shadow: 0 22px 44px rgba(20, 15, 10, 0.2);
+    }
+
+    .result-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(184, 151, 98, 0.34), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 34%);
+      pointer-events: none;
+    }
+
+    .result-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .result-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .price {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 0.04em;
+      font-size: clamp(2rem, 4vw, 3.45rem);
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+      margin-bottom: 12px;
+      font-weight: 800;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+    }
+
+    .sub {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .stats-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 14px;
+    }
+
+    .stats-head strong {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .stats-head span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .mini {
+      border: 1px solid rgba(123, 104, 79, 0.16);
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, #fffdfa 0%, #f8f3ec 100%);
+    }
+
+    .mini strong {
+      display: block;
+      font-size: 1.06rem;
+      line-height: 1.2;
+      margin-bottom: 5px;
+      letter-spacing: -0.03em;
+    }
+
+    .mini span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .drivers {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(123, 104, 79, 0.13);
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    .drivers h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .bullets {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.12);
+      transform: translateY(-50%);
+    }
+
+    .footnote {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(123, 104, 79, 0.12);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 1080px) {
       .hero-grid,
       .tool {
         grid-template-columns: 1fr;
       }
-      .hero-image { min-height: 220px; }
+
+      .hero-grid {
+        min-height: 0;
+      }
+
+      .hero-image,
+      .hero-copy {
+        min-height: 0;
+      }
+
+      .hero-image {
+        min-height: 320px;
+      }
+
+      .card--results {
+        position: static;
+      }
+    }
+
+    @media (max-width: 840px) {
+      .brandbar {
+        border-radius: 28px;
+        padding: 16px;
+      }
+
+      .hero-highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
-      .page { padding-inline: 14px; }
-      .hero-copy,
-      .card { padding: 22px; }
+      .page {
+        padding-inline: 14px;
+        padding-bottom: 52px;
+      }
+
+      .brandbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand-pill {
+        white-space: normal;
+      }
+
+      .hero {
+        border-radius: 28px;
+      }
+
+      .hero-copy {
+        padding: 26px 20px 24px;
+      }
+
+      .hero-copy p {
+        font-size: 0.98rem;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: clamp(2.2rem, 11vw, 3.2rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-cta,
+      .hero-note {
+        width: 100%;
+      }
+
+      .hero-image {
+        min-height: 250px;
+      }
+
+      .hero-panel {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+      }
+
+      .card {
+        padding: 22px 18px;
+        border-radius: 24px;
+      }
+
       .grid,
       .checks,
-      .mini-stats { grid-template-columns: 1fr; }
-      .brandbar { align-items: flex-start; }
-      h1 { max-width: 100%; }
+      .mini-stats,
+      .hero-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .result-band {
+        padding: 22px 18px;
+      }
+
+      .price {
+        font-size: clamp(1.8rem, 9vw, 2.6rem);
+      }
+
+      .sub,
+      .card p.lead,
+      .helper,
+      .footnote,
+      .tiny {
+        font-size: 0.92rem;
+      }
     }
   </style>
 </head>
@@ -331,6 +801,7 @@
           <span>Local Homes, Modern Marketing.</span>
         </div>
       </div>
+      <div class="brand-pill">North West homes, instant indicative range</div>
     </div>
 
     <section class="hero">
@@ -342,123 +813,176 @@
             Enter a few details about your property and get an instant indicative price range based on area, size,
             condition and key selling features.
           </p>
+
+          <div class="hero-actions">
+            <a class="hero-cta" href="#valuationForm">Start valuation</a>
+            <div class="hero-note">A simple demo for housing-specific pricing signals</div>
+          </div>
+
+          <div class="hero-highlights" aria-label="Key valuation highlights">
+            <div>
+              <strong>Area-led pricing</strong>
+              <span>Weighting reflects postcode and local buyer demand.</span>
+            </div>
+            <div>
+              <strong>Home-specific inputs</strong>
+              <span>Bedrooms, condition, parking and outdoor space all matter.</span>
+            </div>
+            <div>
+              <strong>Clear result panel</strong>
+              <span>Indicative range, midpoint and confidence in one view.</span>
+            </div>
+          </div>
         </div>
-        <div class="hero-image"></div>
+
+        <div class="hero-image" aria-hidden="true">
+          <div class="hero-panel">
+            <strong>Designed to feel like a proper James Gorman Property tool</strong>
+            <span>Fast to use, housing-specific, and polished enough for a client-facing showcase link.</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="tool">
       <div class="card">
-        <h2>Property details</h2>
-        <p class="lead">Answer the core housing questions, then the tool returns an indicative valuation range.</p>
+        <div class="card-header">
+          <h2>Property details</h2>
+          <p class="lead">Answer the core housing questions and the valuation panel updates with an indicative range.</p>
+        </div>
 
         <form id="valuationForm">
-          <div class="grid">
-            <div class="field">
-              <label for="postcode">Postcode</label>
-              <select id="postcode">
-                <option value="BT47">BT47</option>
-                <option value="BT48" selected>BT48</option>
-                <option value="BT49">BT49</option>
-                <option value="BT51">BT51</option>
-                <option value="BT82">BT82</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="area">Area</label>
-              <select id="area">
-                <option value="Waterside" selected>Waterside</option>
-                <option value="Cityside">Cityside</option>
-                <option value="Culmore">Culmore</option>
-                <option value="Eglinton">Eglinton</option>
-                <option value="Strathfoyle">Strathfoyle</option>
-                <option value="Claudy">Claudy</option>
-                <option value="Dungiven">Dungiven</option>
-                <option value="Limavady">Limavady</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="type">Property type</label>
-              <select id="type">
-                <option value="detached">Detached</option>
-                <option value="semi" selected>Semi-detached</option>
-                <option value="terrace">Terrace</option>
-                <option value="bungalow">Bungalow</option>
-                <option value="apartment">Apartment</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="bedrooms">Bedrooms</label>
-              <select id="bedrooms">
-                <option>1</option>
-                <option>2</option>
-                <option selected>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option value="6">6+</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="bathrooms">Bathrooms</label>
-              <select id="bathrooms">
-                <option selected>1</option>
-                <option>2</option>
-                <option value="3">3+</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="condition">Condition</label>
-              <select id="condition">
-                <option value="needs-work">Needs modernisation</option>
-                <option value="good" selected>Good condition</option>
-                <option value="modernised">Recently modernised</option>
-                <option value="premium">Premium finish</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="parking">Parking</label>
-              <select id="parking">
-                <option value="none">On-street only</option>
-                <option value="driveway" selected>Driveway</option>
-                <option value="multiple">Driveway for 2+</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="garden">Outdoor space</label>
-              <select id="garden">
-                <option value="none">None / yard only</option>
-                <option value="small">Small garden</option>
-                <option value="family" selected>Family-sized garden</option>
-                <option value="large">Large plot</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label>Extra features</label>
-              <div class="checks">
-                <label class="check"><input type="checkbox" id="garage" checked /> Garage</label>
-                <label class="check"><input type="checkbox" id="extension" /> Extension</label>
-                <label class="check"><input type="checkbox" id="kitchen" checked /> Modern kitchen</label>
-                <label class="check"><input type="checkbox" id="office" /> Home office</label>
+          <div class="form-section">
+            <p class="section-title">Location</p>
+            <div class="grid">
+              <div class="field">
+                <label for="postcode">Postcode</label>
+                <select id="postcode">
+                  <option value="BT47">BT47</option>
+                  <option value="BT48" selected>BT48</option>
+                  <option value="BT49">BT49</option>
+                  <option value="BT51">BT51</option>
+                  <option value="BT82">BT82</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="area">Area</label>
+                <select id="area">
+                  <option value="Waterside" selected>Waterside</option>
+                  <option value="Cityside">Cityside</option>
+                  <option value="Culmore">Culmore</option>
+                  <option value="Eglinton">Eglinton</option>
+                  <option value="Strathfoyle">Strathfoyle</option>
+                  <option value="Claudy">Claudy</option>
+                  <option value="Dungiven">Dungiven</option>
+                  <option value="Limavady">Limavady</option>
+                </select>
               </div>
             </div>
           </div>
 
-          <button class="submit" type="submit">Get indicative price</button>
+          <div class="form-section">
+            <p class="section-title">Home profile</p>
+            <div class="grid">
+              <div class="field">
+                <label for="type">Property type</label>
+                <select id="type">
+                  <option value="detached">Detached</option>
+                  <option value="semi" selected>Semi-detached</option>
+                  <option value="terrace">Terrace</option>
+                  <option value="bungalow">Bungalow</option>
+                  <option value="apartment">Apartment</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="condition">Condition</label>
+                <select id="condition">
+                  <option value="needs-work">Needs modernisation</option>
+                  <option value="good" selected>Good condition</option>
+                  <option value="modernised">Recently modernised</option>
+                  <option value="premium">Premium finish</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="bedrooms">Bedrooms</label>
+                <select id="bedrooms">
+                  <option>1</option>
+                  <option>2</option>
+                  <option selected>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option value="6">6+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="bathrooms">Bathrooms</label>
+                <select id="bathrooms">
+                  <option selected>1</option>
+                  <option>2</option>
+                  <option value="3">3+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="parking">Parking</label>
+                <select id="parking">
+                  <option value="none">On-street only</option>
+                  <option value="driveway" selected>Driveway</option>
+                  <option value="multiple">Driveway for 2+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="garden">Outdoor space</label>
+                <select id="garden">
+                  <option value="none">None / yard only</option>
+                  <option value="small">Small garden</option>
+                  <option value="family" selected>Family-sized garden</option>
+                  <option value="large">Large plot</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <p class="section-title">Extra value signals</p>
+            <div class="grid">
+              <div class="field full">
+                <label for="garage">Selected features</label>
+                <div class="checks">
+                  <label class="check"><input type="checkbox" id="garage" checked /><span>Garage</span></label>
+                  <label class="check"><input type="checkbox" id="extension" /><span>Extension</span></label>
+                  <label class="check"><input type="checkbox" id="kitchen" checked /><span>Modern kitchen</span></label>
+                  <label class="check"><input type="checkbox" id="office" /><span>Home office</span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="submit-wrap">
+            <button class="submit" type="submit">Get indicative price</button>
+            <p class="helper">This is an indicative guide only and not a formal survey valuation.</p>
+          </div>
         </form>
 
         <div class="tiny">
-          Mockup only. This is a concept page to show how the engine could work on James Gorman Property.
+          Mockup only. This concept page shows how a James Gorman Property valuation engine could look and feel.
         </div>
       </div>
 
-      <div class="card">
-        <h2>Indicative valuation</h2>
-        <p class="lead">The result updates instantly based on the property profile entered.</p>
+      <div class="card card--results">
+        <div class="card-header">
+          <h2>Indicative valuation</h2>
+          <p class="lead">A confident, client-friendly result view based on the property profile entered.</p>
+        </div>
 
-        <div class="result-band">
-          <small>Estimated range</small>
+        <div class="result-band" aria-live="polite">
+          <div class="result-label">Estimated range</div>
           <div class="price" id="range">£188,000 – £212,000</div>
           <div class="sub" id="summary">3-bed semi-detached home in Waterside, good condition, driveway, garage and family-sized garden.</div>
+        </div>
+
+        <div class="stats-head">
+          <strong>What shapes the estimate</strong>
+          <span>Updated as inputs change</span>
         </div>
 
         <div class="mini-stats">
@@ -468,15 +992,22 @@
           </div>
           <div class="mini">
             <strong id="confidence">Medium</strong>
-            <span>Confidence range</span>
+            <span>Confidence level</span>
+          </div>
+          <div class="mini">
+            <strong id="spread">£24,000</strong>
+            <span>Range width</span>
           </div>
         </div>
 
-        <ul class="bullets" id="drivers">
-          <li>Waterside family homes remain one of the strongest local seller segments.</li>
-          <li>Garage, driveway and outdoor space all support the upper end of the range.</li>
-          <li>Condition has a big impact on pricing confidence and buyer demand.</li>
-        </ul>
+        <div class="drivers">
+          <h3>Pricing drivers</h3>
+          <ul class="bullets" id="drivers">
+            <li>Waterside family homes remain one of the strongest local seller segments.</li>
+            <li>Garage, driveway and outdoor space all support the upper end of the range.</li>
+            <li>Condition has a big impact on pricing confidence and buyer demand.</li>
+          </ul>
+        </div>
 
         <div class="footnote">
           This tool is designed to give an instant indicative range, not a formal survey valuation.
@@ -490,10 +1021,12 @@
       range: document.getElementById('range'),
       midpoint: document.getElementById('midpoint'),
       confidence: document.getElementById('confidence'),
+      spread: document.getElementById('spread'),
       summary: document.getElementById('summary'),
       drivers: document.getElementById('drivers')
     };
 
+    const form = document.getElementById('valuationForm');
     const baseByPostcode = { BT47: 172000, BT48: 184000, BT49: 176000, BT51: 178000, BT82: 169000 };
     const areaAdjust = { Waterside: 9000, Cityside: 5000, Culmore: 18000, Eglinton: 14000, Strathfoyle: 3000, Claudy: 7000, Dungiven: 5000, Limavady: 10000 };
     const typeAdjust = { detached: 80000, semi: 32000, terrace: 12000, bungalow: 56000, apartment: -18000 };
@@ -502,7 +1035,18 @@
     const gardenAdjust = { none: -5000, small: 0, family: 7000, large: 14000 };
 
     function currency(v) {
-      return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(v);
+      return new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: 'GBP',
+        maximumFractionDigits: 0
+      }).format(v);
+    }
+
+    function confidenceLabel(condition, extras, type) {
+      if (condition === 'premium' && extras >= 2) return 'High';
+      if (condition === 'modernised' || extras >= 3) return 'Medium-high';
+      if (type === 'apartment' || condition === 'needs-work') return 'Medium';
+      return 'Medium';
     }
 
     function calculate(e) {
@@ -539,19 +1083,29 @@
       const spread = 13000 + (extras * 2000) + (condition === 'needs-work' ? 5000 : 0);
       const low = Math.round((midpoint - spread) / 1000) * 1000;
       const high = Math.round((midpoint + spread) / 1000) * 1000;
+      const summaryBits = [];
+
+      summaryBits.push(`${bedrooms}-bed ${type.replace('-', ' ')} home in ${area}`);
+      summaryBits.push(`${condition.replace('-', ' ')} condition`);
+      if (parking !== 'none') summaryBits.push(parking === 'multiple' ? 'parking for 2+' : 'parking');
+      if (garage) summaryBits.push('garage');
+      if (garden !== 'none') summaryBits.push(garden === 'family' ? 'family-sized garden' : 'outdoor space');
 
       refs.range.textContent = `${currency(low)} – ${currency(high)}`;
       refs.midpoint.textContent = currency(Math.round(midpoint / 1000) * 1000);
-      refs.confidence.textContent = (condition === 'premium' || extras >= 3) ? 'Medium-high' : 'Medium';
-      refs.summary.textContent = `${bedrooms}-bed ${type.replace('-', ' ')} home in ${area}, ${condition.replace('-', ' ')} condition${garage ? ', garage' : ''}${parking !== 'none' ? ', parking' : ''}${garden !== 'none' ? ', outdoor space' : ''}.`;
+      refs.confidence.textContent = confidenceLabel(condition, extras, type);
+      refs.spread.textContent = currency(high - low);
+      refs.summary.textContent = `${summaryBits.join(', ')}.`;
 
       const lines = [];
       lines.push(`${area} gives the estimate its biggest local weighting.`);
+
       if (type === 'detached') lines.push('Detached homes tend to command a stronger premium where condition is solid.');
       else if (type === 'semi') lines.push('Semi-detached homes sit in a strong family buyer bracket across the North West.');
       else if (type === 'terrace') lines.push('Terraced pricing is more sensitive to finish, parking and exact micro-location.');
       else if (type === 'bungalow') lines.push('Bungalows usually benefit from scarcity and broad buyer appeal.');
-      else lines.push('Apartments depend more heavily on exact location and finish, so the range stays wider.');
+      else lines.push('Apartments rely more heavily on exact location and finish, so the range stays broader.');
+
       if (garage || extension || kitchen || office) {
         const picked = [];
         if (garage) picked.push('garage');
@@ -562,10 +1116,12 @@
       } else {
         lines.push('Without extra value signals selected, the estimate leans mainly on area, size and condition.');
       }
-      refs.drivers.innerHTML = lines.map(line => `<li>${line}</li>`).join('');
+
+      refs.drivers.innerHTML = lines.map((line) => `<li>${line}</li>`).join('');
     }
 
-    document.getElementById('valuationForm').addEventListener('submit', calculate);
+    form.addEventListener('submit', calculate);
+    form.addEventListener('change', calculate);
     calculate();
   </script>
 </body>
