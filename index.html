@@ -4,37 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Gorman Property | Instant Guide Price</title>
-  <meta name="description" content="Get an instant guide price range for your property with James Gorman Property, shaped by local area, home type, condition and extra features." />
+  <meta name="description" content="Get a quick guide price for your home with James Gorman Property, then send it through for a fuller valuation." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f1ea;
-      --bg-soft: #fbf8f4;
-      --panel: rgba(255, 255, 255, 0.92);
-      --panel-solid: #ffffff;
-      --ink: #161412;
-      --muted: #6f685f;
-      --line: rgba(123, 104, 79, 0.16);
-      --line-strong: rgba(123, 104, 79, 0.24);
+      --cream: #f6f0e7;
+      --cream-soft: #fbf8f4;
+      --sand: rgba(255, 247, 238, 0.84);
+      --panel: rgba(255, 255, 255, 0.9);
+      --line: rgba(180, 146, 93, 0.22);
+      --ink: #171311;
+      --muted: #655b52;
       --gold: #b89762;
-      --gold-dark: #9d7a44;
-      --gold-soft: rgba(184, 151, 98, 0.12);
-      --ok: #177245;
-      --ok-soft: rgba(23, 114, 69, 0.1);
-      --warn: #8a5d14;
-      --warn-soft: rgba(184, 151, 98, 0.16);
-      --shadow-soft: 0 18px 50px rgba(20, 15, 10, 0.08);
-      --shadow-card: 0 28px 80px rgba(20, 15, 10, 0.12);
-      --shadow-press: 0 12px 24px rgba(157, 122, 68, 0.22);
-      --font-sans: "Manrope", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-serif: "Cormorant Garamond", Georgia, serif;
-      --radius-xl: 32px;
+      --gold-deep: #8f6c39;
+      --shadow: 0 24px 70px rgba(20, 15, 10, 0.16);
+      --shadow-soft: 0 16px 40px rgba(20, 15, 10, 0.1);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Manrope", Inter, system-ui, sans-serif;
+      --max: 1240px;
+      --radius-xl: 34px;
       --radius-lg: 24px;
       --radius-md: 18px;
-      --radius-sm: 14px;
-      --max: 1180px;
+      --radius-pill: 999px;
     }
 
     * {
@@ -47,13 +40,11 @@
 
     body {
       margin: 0;
-      font-family: var(--font-sans);
+      font-family: var(--sans);
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(184, 151, 98, 0.16), transparent 26%),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.75), transparent 34%),
-        linear-gradient(180deg, #fbf8f4 0%, #f1e9df 100%);
-      min-height: 100vh;
+        radial-gradient(circle at top left, rgba(184, 151, 98, 0.14), transparent 24%),
+        linear-gradient(180deg, #fbf7f2 0%, #f2e9df 100%);
       overflow-x: hidden;
     }
 
@@ -62,20 +53,22 @@
       text-decoration: none;
     }
 
-    img,
-    svg,
+    button,
     input,
     select,
-    button,
     textarea {
+      font: inherit;
+    }
+
+    img {
       max-width: 100%;
-      min-width: 0;
+      display: block;
     }
 
     .page {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 18px 72px;
+      padding: 24px 18px 42px;
     }
 
     .brandbar {
@@ -83,13 +76,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 28px;
-      padding: 16px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.58);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.56);
+      margin-bottom: 24px;
+      padding: 14px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 12px 28px rgba(20, 15, 10, 0.06);
       backdrop-filter: blur(14px);
-      box-shadow: 0 14px 36px rgba(20, 15, 10, 0.06);
     }
 
     .brand {
@@ -100,51 +93,53 @@
     }
 
     .brand img {
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #fff;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
       flex: none;
     }
 
-    .brand-copy strong {
+    .brand-copy strong,
+    .brand-copy span {
       display: block;
-      font-size: 1.04rem;
+    }
+
+    .brand-copy strong {
+      font-size: 1rem;
       letter-spacing: 0.01em;
     }
 
     .brand-copy span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.94rem;
       margin-top: 3px;
-      overflow-wrap: anywhere;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .brand-pill {
+    .brand-pill,
+    .eyebrow,
+    .mini-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.72);
-      color: #5e4b2f;
-      font-size: 0.84rem;
-      font-weight: 700;
-      white-space: nowrap;
+      width: fit-content;
+      padding: 9px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(184, 151, 98, 0.12);
+      border: 1px solid rgba(184, 151, 98, 0.2);
+      color: var(--gold-deep);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .brand-pill::before,
     .eyebrow::before,
-    .result-label::before,
-    .tiny-note::before,
-    .section-tag::before,
-    .stat-tag::before,
-    .process-card strong::before,
-    .trust-item::before {
+    .mini-tag::before,
+    .trust-point::before {
       content: "";
       width: 8px;
       height: 8px;
@@ -158,373 +153,189 @@
       position: relative;
       overflow: hidden;
       border-radius: 40px;
+      min-height: 700px;
       border: 1px solid rgba(255, 255, 255, 0.55);
-      box-shadow: 0 34px 90px rgba(20, 15, 10, 0.16);
+      box-shadow: var(--shadow);
       background:
-        radial-gradient(circle at top right, rgba(184, 151, 98, 0.14), transparent 26%),
-        linear-gradient(180deg, #f6efe7 0%, #efe4d6 100%);
-      margin-bottom: 32px;
+        linear-gradient(109deg, rgba(21, 17, 14, 0.9) 0%, rgba(21, 17, 14, 0.6) 33%, rgba(21, 17, 14, 0.24) 57%, rgba(21, 17, 14, 0.66) 100%),
+        linear-gradient(180deg, rgba(255, 236, 214, 0.08), rgba(255, 236, 214, 0.04)),
+        url('https://static.wixstatic.com/media/8a0a22_ce12064411c048d59fa5ed7c5aafbb6c~mv2.png/v1/fill/w_1600,h_1100,al_c,q_90,enc_avif,quality_auto/Untitled%20design%20(17).png') center center / cover;
     }
 
-    .hero::before {
+    .hero::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, transparent 24%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 34%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
+        radial-gradient(circle at 18% 18%, rgba(184, 151, 98, 0.18), transparent 28%);
       pointer-events: none;
     }
 
     .hero-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 0.84fr) minmax(470px, 1.16fr);
-      min-height: 590px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 410px);
+      gap: 22px;
+      align-items: start;
+      min-height: 700px;
+      padding: clamp(28px, 4vw, 42px);
     }
 
     .hero-copy {
-      position: relative;
-      z-index: 1;
-      margin: 28px 0 28px 28px;
-      padding: clamp(34px, 5vw, 56px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 20px;
-      border-radius: 32px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 243, 235, 0.92));
-      border: 1px solid rgba(255, 255, 255, 0.68);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 22px 52px rgba(20, 15, 10, 0.12);
-    }
-
-    .eyebrow,
-    .section-tag,
-    .result-label,
-    .tiny-note,
-    .stat-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(184, 151, 98, 0.2);
-      background: rgba(184, 151, 98, 0.09);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--gold-dark);
-      font-size: 0.75rem;
-      font-weight: 800;
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      color: #fffefb;
+      padding-right: min(4vw, 36px);
+      max-width: 560px;
     }
 
     h1 {
       margin: 0;
-      padding-bottom: 0.08em;
-      font-family: var(--font-serif);
-      font-size: clamp(3.45rem, 5.8vw, 5.7rem);
-      font-weight: 600;
-      line-height: 0.91;
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 7vw, 6.4rem);
+      line-height: 0.92;
       letter-spacing: -0.05em;
-      color: #120f0c;
-      max-width: 8ch;
+      font-weight: 600;
       text-wrap: balance;
     }
 
     .hero-copy p {
       margin: 0;
-      max-width: 44ch;
-      color: #5f564d;
-      font-size: 1.03rem;
-      line-height: 1.78;
+      font-size: 1rem;
+      line-height: 1.68;
+      color: rgba(255, 249, 241, 0.86);
+      max-width: 35ch;
     }
 
     .hero-actions {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 2px;
+      gap: 12px;
+      margin-top: 6px;
     }
 
-    .hero-cta,
-    .ghost-cta,
+    .cta,
+    .ghost,
     .submit,
-    .lead-button,
-    .phone-link {
+    .call-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 52px;
       padding: 0 20px;
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       font-weight: 800;
-      border: 0;
       cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-      font-family: inherit;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      border: 0;
     }
 
-    .hero-cta,
-    .submit,
-    .lead-button {
-      background: linear-gradient(135deg, var(--gold) 0%, #cfab72 100%);
+    .cta,
+    .submit {
+      background: linear-gradient(135deg, var(--gold) 0%, #cfaa6c 100%);
       color: white;
-      box-shadow: var(--shadow-press);
+      box-shadow: 0 12px 24px rgba(157, 122, 68, 0.28);
     }
 
-    .hero-cta:hover,
-    .ghost-cta:hover,
+    .ghost,
+    .call-link {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fffaf3;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .cta:hover,
+    .ghost:hover,
     .submit:hover,
-    .lead-button:hover,
-    .phone-link:hover {
+    .call-link:hover {
       transform: translateY(-1px);
     }
 
-    .ghost-cta,
-    .phone-link {
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(123, 104, 79, 0.2);
-      color: #453523;
-      box-shadow: 0 12px 28px rgba(20, 15, 10, 0.07);
-    }
-
-    .hero-snapshot {
+    .hero-card {
       display: grid;
-      gap: 8px;
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: linear-gradient(145deg, rgba(20, 18, 16, 0.92), rgba(52, 41, 30, 0.86));
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 42px rgba(20, 15, 10, 0.16);
-      max-width: 420px;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255, 252, 248, 0.94), rgba(252, 247, 241, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      box-shadow: 0 24px 48px rgba(20, 15, 10, 0.18);
+      backdrop-filter: blur(18px);
     }
 
-    .hero-snapshot-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.72);
+    .card-head {
+      display: grid;
+      gap: 10px;
     }
 
-    .hero-snapshot-label::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.16);
-    }
-
-    .hero-snapshot strong {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 3.6vw, 2.75rem);
+    .card-head h2,
+    .bottom-panel h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      line-height: 0.95;
       font-weight: 600;
-      line-height: 0.94;
       letter-spacing: -0.04em;
+      color: #17120e;
     }
 
-    .hero-snapshot span,
-    .hero-snapshot small {
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 0.94rem;
-      line-height: 1.55;
-    }
-
-    .hero-trust {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
+    .card-head p,
+    .result-copy,
+    .small-note,
+    .footer-note p,
+    .status {
+      margin: 0;
       color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-
-    .trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-highlights {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 4px;
-    }
-
-    .hero-highlights div,
-    .process-card,
-    .mini,
-    .capture-card,
-    .breakdown,
-    .drivers,
-    .footnote,
-    .model-strip {
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(184, 151, 98, 0.16);
-      box-shadow: 0 16px 30px rgba(20, 15, 10, 0.06);
-    }
-
-    .hero-highlights div {
-      padding: 16px 16px 14px;
-      border-radius: 20px;
-    }
-
-    .hero-highlights strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.98rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-highlights span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .hero-image {
-      position: relative;
-      min-height: 590px;
-      background-image:
-        linear-gradient(180deg, rgba(18, 16, 14, 0.02), rgba(18, 16, 14, 0.18)),
-        url('https://static.wixstatic.com/media/8a0a22_ce12064411c048d59fa5ed7c5aafbb6c~mv2.png/v1/fill/w_1400,h_900,al_c,q_90,enc_avif,quality_auto/Untitled%20design%20(17).png');
-      background-size: cover;
-      background-position: 58% center;
-    }
-
-    .hero-image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(241, 232, 220, 0.08) 0%, rgba(241, 232, 220, 0) 28%),
-        radial-gradient(circle at 70% 18%, rgba(184, 151, 98, 0.22), transparent 30%),
-        linear-gradient(180deg, rgba(18, 16, 14, 0.04) 14%, rgba(16, 16, 16, 0.56) 100%);
-    }
-
-    .hero-panel {
-      position: absolute;
-      right: 28px;
-      bottom: 28px;
-      z-index: 1;
-      max-width: 360px;
-      padding: 22px 22px 20px;
-      border-radius: 22px;
-      color: white;
-      background: linear-gradient(145deg, rgba(14, 14, 14, 0.78), rgba(28, 24, 20, 0.9));
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
-    }
-
-    .hero-panel strong,
-    .drivers h3,
-    .breakdown h3,
-    .capture-card h3,
-    .tool-copy h2,
-    .process h2 {
-      display: block;
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-panel span {
-      display: block;
-      color: rgba(255, 255, 255, 0.76);
       font-size: 0.94rem;
       line-height: 1.6;
     }
 
-    .tool {
+    .estimate {
       display: grid;
-      grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
-      gap: 28px;
-      align-items: start;
+      gap: 7px;
+      padding: 16px;
+      border-radius: 22px;
+      background: #1e1813;
+      color: white;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
-    #valuationForm,
-    #guidePrice {
-      scroll-margin-top: 24px;
+    .estimate .result-copy {
+      color: rgba(255, 247, 236, 0.86);
     }
 
-    .card {
-      background: var(--panel);
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 28px;
-      padding: clamp(24px, 4vw, 34px);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(14px);
+    .estimate .small-note {
+      color: rgba(255, 247, 236, 0.72);
+      font-size: 0.88rem;
     }
 
-    .card--results {
-      display: grid;
-      gap: 18px;
+    .estimate .mini-tag {
+      background: rgba(184, 151, 98, 0.12);
+      color: rgba(255, 241, 222, 0.82);
+      border-color: rgba(184, 151, 98, 0.18);
     }
 
-    .card-header {
-      margin-bottom: 4px;
-    }
-
-    .card h2,
-    .tool-copy h2,
-    .process h2 {
-      margin: 0 0 8px;
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 3vw, 2.6rem);
+    .range {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.15rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
       font-weight: 600;
-      letter-spacing: -0.035em;
-      line-height: 0.98;
     }
 
-    .lead,
-    .tool-copy p,
-    .process-card p,
-    .footnote,
-    .helper,
-    .tiny,
-    .status-note,
-    .breakdown-note,
-    .drivers p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.68;
-    }
-
-    .form-section + .form-section {
-      margin-top: 26px;
-      padding-top: 26px;
-      border-top: 1px solid rgba(123, 104, 79, 0.12);
-    }
-
-    .section-title {
-      margin: 0 0 16px;
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-    }
-
-    .grid {
+    .form-grid,
+    .capture-grid {
       display: grid;
+      gap: 10px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
     }
 
-    .field,
-    .lead-grid .field {
+    .field {
       display: grid;
-      gap: 9px;
+      gap: 8px;
       min-width: 0;
     }
 
@@ -533,483 +344,231 @@
     }
 
     label {
-      font-size: 0.92rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: #2b221b;
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      min-height: 54px;
-      border: 1px solid rgba(123, 104, 79, 0.22);
+      border: 1px solid rgba(123, 104, 79, 0.18);
       border-radius: 16px;
-      padding: 0 16px;
-      background: rgba(255, 255, 255, 0.94);
-      font: inherit;
+      background: rgba(255, 255, 255, 0.84);
       color: var(--ink);
+      min-height: 52px;
+      padding: 0 15px;
       outline: none;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
     }
 
     textarea {
-      min-height: 112px;
-      padding: 14px 16px;
+      min-height: 92px;
+      padding: 14px 15px;
       resize: vertical;
     }
 
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: rgba(184, 151, 98, 0.65);
+      border-color: rgba(184, 151, 98, 0.56);
       box-shadow: 0 0 0 4px rgba(184, 151, 98, 0.12);
     }
 
-    .field small,
-    .tiny,
-    .helper,
-    .status-note,
-    .breakdown-note,
-    .tiny-note-text {
-      font-size: 0.88rem;
-    }
-
     .checks {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .check {
-      display: flex;
+      position: relative;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      min-height: 54px;
-      padding: 0 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(123, 104, 79, 0.16);
-      background: rgba(255, 255, 255, 0.86);
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(123, 104, 79, 0.18);
+      background: rgba(255, 255, 255, 0.7);
+      color: #3a2e23;
+      font-size: 0.88rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-
-    .check input {
-      width: 18px;
-      height: 18px;
-      min-height: 18px;
-      padding: 0;
-      accent-color: var(--gold-dark);
-      box-shadow: none;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
     }
 
     .check:hover {
-      border-color: rgba(184, 151, 98, 0.32);
-      background: rgba(255, 255, 255, 0.96);
+      transform: translateY(-1px);
     }
 
-    .submit-wrap,
-    .lead-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 22px;
+    .check input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .check.active {
+      background: rgba(184, 151, 98, 0.14);
+      border-color: rgba(184, 151, 98, 0.42);
+      color: #7a5727;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(123, 104, 79, 0.22), transparent);
+      margin: 2px 0;
+    }
+
+    .submit-row {
+      display: grid;
+      gap: 8px;
     }
 
     .submit {
       width: 100%;
-      min-height: 56px;
-      font-size: 1rem;
     }
 
-    .tiny {
-      margin-top: 20px;
+    .status {
+      min-height: 22px;
+      font-size: 0.88rem;
     }
 
-    .result-band {
-      display: grid;
-      gap: 10px;
-      padding: 24px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(20, 18, 16, 0.96), rgba(45, 35, 24, 0.92));
-      color: white;
-      box-shadow: 0 24px 50px rgba(20, 15, 10, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .result-label {
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-    }
-
-    .price {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 0.96;
-      letter-spacing: -0.05em;
-      font-weight: 600;
-    }
-
-    .sub {
-      color: rgba(255, 255, 255, 0.78);
-      line-height: 1.62;
-      font-size: 0.96rem;
-    }
-
-    .stats-head,
-    .impact-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .stats-head strong,
-    .impact-head strong {
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .stats-head span,
-    .impact-head span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .mini {
-      padding: 18px 16px 16px;
-      border-radius: 20px;
-    }
-
-    .mini strong {
-      display: block;
-      font-size: 1.1rem;
-      letter-spacing: -0.03em;
-      margin-bottom: 6px;
-    }
-
-    .mini span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.55;
-    }
-
-    .impact-strip,
-    .breakdown-list,
-    .bullets,
-    .process-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .impact-strip {
-      grid-template-columns: 1fr;
-    }
-
-    .impact-chip {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(123, 104, 79, 0.14);
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .impact-chip small {
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .impact-chip span:last-child {
-      white-space: nowrap;
-    }
-
-    .impact-chip.positive span:last-child {
-      color: var(--ok);
-    }
-
-    .impact-chip.negative span:last-child {
-      color: #9f4321;
-    }
-
-    .drivers,
-    .breakdown,
-    .capture-card,
-    .footnote,
-    .model-strip,
-    .tool-copy,
-    .process {
-      padding: 22px;
-      border-radius: 24px;
-    }
-
-    .drivers h3,
-    .breakdown h3,
-    .capture-card h3,
-    .tool-copy h2,
-    .process h2 {
-      margin-bottom: 8px;
-    }
-
-    .bullets {
-      padding-left: 18px;
-      margin: 14px 0 0;
-      color: #3d3329;
-      line-height: 1.65;
-    }
-
-    .bullets li + li {
-      margin-top: 9px;
-    }
-
-    .breakdown-list {
-      margin-top: 14px;
-    }
-
-    .break-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(123, 104, 79, 0.1);
-      font-size: 0.94rem;
-    }
-
-    .break-row:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .break-row span:first-child {
-      color: #493d31;
-      line-height: 1.45;
-    }
-
-    .break-row strong {
-      white-space: nowrap;
-      font-size: 0.94rem;
-    }
-
-    .break-row strong.negative {
-      color: #9f4321;
-    }
-
-    .capture-card {
-      display: grid;
-      gap: 16px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 244, 238, 0.92));
-    }
-
-    .lead-grid {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .status-note {
-      min-height: 1.4em;
-    }
-
-    .phone-link {
-      width: 100%;
-    }
-
-    .model-strip {
-      display: grid;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .model-strip-grid {
+    .trust-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-    }
-
-    .model-stat {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(123, 104, 79, 0.12);
-    }
-
-    .model-stat strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 4px;
-      letter-spacing: -0.02em;
-    }
-
-    .model-stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.5;
-    }
-
-    .tool-copy {
-      margin-top: 28px;
-      background: rgba(255, 255, 255, 0.86);
-    }
-
-    .process {
-      margin-top: 32px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255, 255, 255, 0.55);
-    }
-
-    .process-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       margin-top: 18px;
     }
 
-    .process-card {
-      padding: 20px;
+    .trust-point,
+    .footer-note {
+      padding: 16px 18px;
       border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
     }
 
-    .process-card strong {
-      display: flex;
+    .trust-point {
+      display: grid;
+      gap: 6px;
+      align-content: start;
+    }
+
+    .trust-point strong {
+      font-size: 0.98rem;
+      line-height: 1.32;
+    }
+
+    .trust-point span {
+      color: var(--muted);
+      font-size: 0.89rem;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
       align-items: center;
-      gap: 10px;
-      font-size: 1rem;
-      margin-bottom: 10px;
     }
 
-    .footnote {
-      font-size: 0.92rem;
-    }
-
-    @media (min-width: 981px) {
-      .card--results {
-        position: sticky;
-        top: 18px;
-      }
-    }
-
-    @media (max-width: 1120px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-copy {
-        margin: 20px 20px 0;
-      }
-
-      .hero-image {
-        min-height: 420px;
-      }
+    .footer-note .call-link {
+      color: #3c2f22;
+      background: rgba(184, 151, 98, 0.1);
+      border-color: rgba(184, 151, 98, 0.24);
+      min-width: 220px;
     }
 
     @media (max-width: 980px) {
-      .tool {
+      .hero {
+        min-height: unset;
+      }
+
+      .hero-grid {
         grid-template-columns: 1fr;
+        min-height: unset;
+        align-items: stretch;
       }
 
-      .card--results {
-        order: -1;
+      .hero-copy {
+        max-width: 100%;
+        padding-right: 0;
       }
 
-      .model-strip-grid,
-      .process-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hero-card {
+        max-width: 540px;
+      }
+
+      .trust-strip,
+      .footer-note {
+        grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 720px) {
       .page {
-        padding: 18px 14px 56px;
+        padding: 16px 14px 34px;
+      }
+
+      .brandbar,
+      .brand {
+        align-items: flex-start;
       }
 
       .brandbar {
         flex-direction: column;
-        align-items: flex-start;
       }
 
-      .brand-pill {
-        white-space: normal;
+      .hero {
+        border-radius: 30px;
       }
 
-      h1 {
-        max-width: 10ch;
+      .hero-grid {
+        padding: 18px;
       }
 
       .hero-copy {
-        margin: 14px 14px 0;
-        padding: 26px;
+        gap: 16px;
       }
 
-      .hero-image {
-        min-height: 240px;
-      }
-
-      .hero-panel {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-        max-width: none;
-      }
-
-      .hero-highlights,
-      .grid,
+      .hero-actions,
       .checks,
-      .impact-strip,
-      .mini-stats,
-      .model-strip-grid,
-      .process-grid,
-      .lead-grid {
+      .form-grid,
+      .capture-grid {
         grid-template-columns: 1fr;
       }
 
-      .card,
-      .drivers,
-      .breakdown,
-      .capture-card,
-      .footnote,
-      .model-strip,
-      .tool-copy,
-      .process {
-        padding: 20px;
+      .form-grid,
+      .capture-grid {
+        display: grid;
       }
 
-      .price {
-        font-size: clamp(2.15rem, 10vw, 3.1rem);
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-highlights,
-      .hero-panel {
-        display: none;
-      }
-
-      .hero-cta,
-      .ghost-cta,
+      .cta,
+      .ghost,
+      .call-link,
       .submit,
-      .lead-button,
-      .phone-link {
+      .footer-note .call-link {
         width: 100%;
+      }
+
+      .hero-card {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: clamp(2.9rem, 13vw, 4rem);
+        line-height: 0.96;
+      }
+
+      .range {
+        font-size: 2.4rem;
       }
     }
   </style>
@@ -1021,727 +580,327 @@
         <img src="https://static.wixstatic.com/media/8a0a22_3307ced7e9c148608dc28867e5630c3b~mv2.png/v1/fill/w_200,h_200,al_c,q_85,enc_avif,quality_auto/James%20Gorman-003.png" alt="James Gorman" />
         <div class="brand-copy">
           <strong>James Gorman Property</strong>
-          <span>North West sales and lettings, with local guidance that feels personal.</span>
+          <span>North West sales guidance with a calmer, more personal feel.</span>
         </div>
       </div>
-      <div class="brand-pill">Guide price engine for Derry and the North West</div>
+      <div class="brand-pill">Instant guide price for local homeowners</div>
     </div>
 
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Instant seller guide</div>
-          <h1>Get a guide price that feels grounded.</h1>
+          <div class="eyebrow">Seller lead page</div>
+          <h1>Get a calmer guide price for your home.</h1>
           <p>
-            This estimate is shaped by local postcode demand, area premium, home type, room count, condition and the practical features buyers notice most. It is still only a guide, but it should feel a lot closer to the real conversation.
+            A quick local estimate for homeowners, with a clean hand-off to James if you want a fuller valuation afterwards.
           </p>
-
           <div class="hero-actions">
-            <a class="hero-cta" href="#guidePrice">See your guide price</a>
-            <a class="ghost-cta" href="#valuationForm">Adjust the details</a>
-          </div>
-
-          <div class="hero-snapshot">
-            <div class="hero-snapshot-label">Live guide range</div>
-            <strong id="heroRange">£304,000 to £360,000</strong>
-            <span id="heroSummary">BT48, Culmore, 3-bed detached, good condition.</span>
-            <small id="heroBand">Medium-high confidence, based on an estimated 134 sq m footprint.</small>
-          </div>
-
-          <div class="hero-trust" aria-label="Valuation reassurance">
-            <span class="trust-item">Updates instantly</span>
-            <span class="trust-item">No obligation</span>
-            <span class="trust-item">Still homeowner-facing, not generic</span>
-          </div>
-
-          <div class="hero-highlights" aria-label="Key valuation highlights">
-            <div>
-              <strong>Local weighting built in</strong>
-              <span>BT47, BT48 and nearby North West patterns move differently, so the tool reflects that.</span>
-            </div>
-            <div>
-              <strong>Transparent logic</strong>
-              <span>See which parts of the home are pushing the estimate up or widening the range.</span>
-            </div>
-            <div>
-              <strong>Useful before you enquire</strong>
-              <span>Get the guide first, then decide if you want James to firm it up in person.</span>
-            </div>
+            <a class="cta" href="#tool">Get my guide price</a>
+            <a class="ghost" href="tel:+442871610402">Call 028 7161 0402</a>
           </div>
         </div>
 
-        <div class="hero-image" aria-hidden="true">
-          <div class="hero-panel">
-            <strong>A better starting point for sellers</strong>
-            <span>
-              Strong city and commuter-belt homes can move quickly, but finish, plot, parking and micro-location still matter. This page is designed to show that clearly.
-            </span>
+        <div class="hero-card" id="tool">
+          <div class="card-head">
+            <div class="mini-tag">Quick estimate</div>
+            <h2>Check your guide price</h2>
+            <p>Choose the closest match, see the range, then send it through if you want James to come back to you.</p>
+          </div>
+
+          <div class="estimate" aria-live="polite">
+            <div class="mini-tag">Current range</div>
+            <div class="range" id="range">£295,000 to £345,000</div>
+            <p class="result-copy" id="summary">Culmore, 3-bed detached, good condition, with driveway and a garden.</p>
+            <p class="small-note" id="detailNote">Guide midpoint £320,000. A proper visit can still move the final figure up or down.</p>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="area">Area</label>
+              <select id="area" name="area">
+                <option value="Culmore">Culmore</option>
+                <option value="Eglinton">Eglinton</option>
+                <option value="Waterside">Waterside</option>
+                <option value="Cityside">Cityside</option>
+                <option value="Limavady">Limavady</option>
+                <option value="Strabane">Strabane</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="type">Property type</label>
+              <select id="type" name="type">
+                <option value="detached">Detached</option>
+                <option value="semi">Semi-detached</option>
+                <option value="terrace">Terrace</option>
+                <option value="bungalow">Bungalow</option>
+                <option value="apartment">Apartment</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="bedrooms">Bedrooms</label>
+              <select id="bedrooms" name="bedrooms">
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="condition">Condition</label>
+              <select id="condition" name="condition">
+                <option value="dated">Tidy but dated</option>
+                <option value="good" selected>Good condition</option>
+                <option value="modern">Recently modernised</option>
+                <option value="premium">Premium finish</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Features</label>
+              <div class="checks">
+                <label class="check active"><input type="checkbox" id="parking" checked />Driveway or garage</label>
+                <label class="check active"><input type="checkbox" id="garden" checked />Good garden</label>
+                <label class="check"><input type="checkbox" id="extension" />Extension or extra reception room</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="capture-grid">
+            <div class="field full">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="Best number" />
+            </div>
+            <div class="field">
+              <label for="timeframe">Selling timeframe</label>
+              <select id="timeframe" name="timeframe">
+                <option value="Just exploring" selected>Just exploring</option>
+                <option value="Within 3 months">Within 3 months</option>
+                <option value="Within 6 months">Within 6 months</option>
+                <option value="Already on the market">Already on the market</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="notes">Anything worth mentioning</label>
+              <textarea id="notes" name="notes" placeholder="Renovations, exact address, plot details or anything else James should know."></textarea>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button class="submit" id="sendButton" type="button">Send this to James</button>
+            <p class="status" id="status">No obligation. Your estimate and details are bundled into one email draft.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="tool">
-      <div class="card">
-        <div class="card-header">
-          <h2>Property details</h2>
-          <p class="lead">Choose the closest match to your home. The result updates as you change each detail, with the price panel shown first on mobile.</p>
-        </div>
-
-        <form id="valuationForm">
-          <div class="form-section">
-            <p class="section-title">Location</p>
-            <div class="grid">
-              <div class="field">
-                <label for="postcode">Postcode district</label>
-                <select id="postcode">
-                  <option value="BT47">BT47</option>
-                  <option value="BT48" selected>BT48</option>
-                  <option value="BT49">BT49</option>
-                  <option value="BT51">BT51</option>
-                  <option value="BT82">BT82</option>
-                </select>
-                <small>Choose the nearest district if you are on the edge of an area.</small>
-              </div>
-              <div class="field">
-                <label for="area">Area or town</label>
-                <select id="area">
-                  <option value="Waterside">Waterside</option>
-                  <option value="Cityside">Cityside</option>
-                  <option value="Culmore" selected>Culmore</option>
-                  <option value="Eglinton">Eglinton</option>
-                  <option value="Drumahoe">Drumahoe</option>
-                  <option value="Strathfoyle">Strathfoyle</option>
-                  <option value="Claudy">Claudy</option>
-                  <option value="Dungiven">Dungiven</option>
-                  <option value="Greysteel">Greysteel</option>
-                  <option value="Limavady">Limavady</option>
-                  <option value="Strabane">Strabane</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-section">
-            <p class="section-title">Home profile</p>
-            <div class="grid">
-              <div class="field">
-                <label for="type">Property type</label>
-                <select id="type">
-                  <option value="detached" selected>Detached</option>
-                  <option value="semi">Semi-detached</option>
-                  <option value="terrace">Terrace</option>
-                  <option value="bungalow">Bungalow</option>
-                  <option value="apartment">Apartment</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="condition">Condition</label>
-                <select id="condition">
-                  <option value="needs-work">Needs modernisation</option>
-                  <option value="fair">Tidy but dated</option>
-                  <option value="good" selected>Good condition</option>
-                  <option value="modernised">Recently modernised</option>
-                  <option value="premium">Premium finish</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="bedrooms">Bedrooms</label>
-                <select id="bedrooms">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3" selected>3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6+</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="bathrooms">Bathrooms</label>
-                <select id="bathrooms">
-                  <option value="1">1</option>
-                  <option value="2" selected>2</option>
-                  <option value="3">3+</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="receptions">Reception rooms</label>
-                <select id="receptions">
-                  <option value="1">1</option>
-                  <option value="2" selected>2</option>
-                  <option value="3">3</option>
-                  <option value="4">4+</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="parking">Parking</label>
-                <select id="parking">
-                  <option value="street">On-street only</option>
-                  <option value="driveway" selected>Driveway</option>
-                  <option value="multiple">Driveway for 2 or more</option>
-                  <option value="gated">Private or gated parking</option>
-                </select>
-              </div>
-              <div class="field full">
-                <label for="outdoor">Outdoor space</label>
-                <select id="outdoor">
-                  <option value="none">None or yard only</option>
-                  <option value="small">Small garden</option>
-                  <option value="family" selected>Family-sized garden</option>
-                  <option value="large">Large garden or plot</option>
-                  <option value="view">Strong outdoor setting or views</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-section">
-            <p class="section-title">Extra details</p>
-            <div class="grid">
-              <div class="field full">
-                <label for="garage">Selected features</label>
-                <div class="checks">
-                  <label class="check"><input type="checkbox" id="garage" checked /><span>Garage</span></label>
-                  <label class="check"><input type="checkbox" id="extension" /><span>Extension</span></label>
-                  <label class="check"><input type="checkbox" id="kitchen" checked /><span>Modern kitchen</span></label>
-                  <label class="check"><input type="checkbox" id="office" /><span>Home office</span></label>
-                  <label class="check"><input type="checkbox" id="utility" /><span>Utility or boot room</span></label>
-                  <label class="check"><input type="checkbox" id="ensuite" checked /><span>Main bedroom en suite</span></label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="submit-wrap">
-            <button class="submit" type="submit">Update guide price</button>
-            <p class="helper">This is not a formal valuation. James would still need presentation, finish and comparable evidence from nearby sales to tighten the final figure.</p>
-          </div>
-        </form>
-
-        <div class="model-strip">
-          <div class="section-tag">How the model works</div>
-          <div class="model-strip-grid">
-            <div class="model-stat">
-              <strong>Local starting point</strong>
-              <span>Each postcode district starts with a different typical £/sq m base.</span>
-            </div>
-            <div class="model-stat">
-              <strong>Home shape and rooms</strong>
-              <span>Type, bedrooms, bathrooms and receptions adjust the modelled size and appeal.</span>
-            </div>
-            <div class="model-stat">
-              <strong>Finish and extras</strong>
-              <span>Condition, parking, outdoor space and practical extras shift both price and confidence.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tool-copy">
-          <h2>Designed for homeowners, not just a lead form</h2>
-          <p>
-            The estimate comes first, then the call-back option. That keeps the page useful on its own while still giving James a clear route into a proper valuation conversation.
-          </p>
-        </div>
+    <section class="trust-strip" aria-label="Reassurance">
+      <div class="trust-point">
+        <strong>Local first</strong>
+        <span>Built around North West pricing patterns, not a generic national average.</span>
       </div>
-
-      <div class="card card--results" id="guidePrice">
-        <div class="card-header">
-          <h2>Your guide price</h2>
-          <p class="lead">You can change any detail and watch the range move straight away.</p>
-        </div>
-
-        <div class="result-band" aria-live="polite">
-          <div class="result-label">Guide price range</div>
-          <div class="price" id="range">£304,000 to £360,000</div>
-          <div class="sub" id="summary">Approx. 134 sq m, 3-bed detached home in Culmore, good condition, driveway parking, family-sized garden, garage, modern kitchen and a main bedroom en suite.</div>
-        </div>
-
-        <div class="stats-head">
-          <strong>Core numbers</strong>
-          <span>Updated from your selections</span>
-        </div>
-
-        <div class="mini-stats">
-          <div class="mini">
-            <span class="stat-tag">Midpoint</span>
-            <strong id="midpoint">£332,000</strong>
-            <span>Middle of the current guide range.</span>
-          </div>
-          <div class="mini">
-            <span class="stat-tag">Confidence</span>
-            <strong id="confidence">Medium-high</strong>
-            <span id="confidenceNote">Fairly typical local home profile with a sensible evidence band.</span>
-          </div>
-          <div class="mini">
-            <span class="stat-tag">Band</span>
-            <strong id="band">±7.0%</strong>
-            <span id="bandNote">This is how far each side of the midpoint the range currently runs.</span>
-          </div>
-          <div class="mini">
-            <span class="stat-tag">Modelled size</span>
-            <strong id="footprint">134 sq m</strong>
-            <span id="marketBasis">Based on a typical BT48 detached footprint.</span>
-          </div>
-        </div>
-
-        <div>
-          <div class="impact-head">
-            <strong>Biggest price drivers</strong>
-            <span>Top uplifts or drags</span>
-          </div>
-          <div class="impact-strip" id="impactStrip"></div>
-        </div>
-
-        <div class="drivers">
-          <h3>What is driving the estimate</h3>
-          <ul class="bullets" id="drivers"></ul>
-        </div>
-
-        <div class="breakdown">
-          <h3>Transparent breakdown</h3>
-          <p class="breakdown-note">This keeps the logic visible. In production, recent comparables and manual review would tighten the final advice further.</p>
-          <div class="breakdown-list" id="breakdownList"></div>
-        </div>
-
-        <div class="capture-card">
-          <h3>Ask James to firm this up</h3>
-          <p class="lead">Send this guide price with your details and James can follow up with a sharper in-person valuation.</p>
-          <form id="leadForm">
-            <div class="lead-grid">
-              <div class="field">
-                <label for="leadName">Name</label>
-                <input id="leadName" name="name" type="text" placeholder="Your name" />
-              </div>
-              <div class="field">
-                <label for="leadPhone">Phone</label>
-                <input id="leadPhone" name="phone" type="tel" placeholder="Best number" />
-              </div>
-              <div class="field">
-                <label for="leadEmail">Email</label>
-                <input id="leadEmail" name="email" type="email" placeholder="you@example.com" />
-              </div>
-              <div class="field">
-                <label for="leadTimeframe">Selling timeframe</label>
-                <select id="leadTimeframe" name="timeframe">
-                  <option value="Just exploring" selected>Just exploring</option>
-                  <option value="Within 3 months">Within 3 months</option>
-                  <option value="Within 6 months">Within 6 months</option>
-                  <option value="Already on the market">Already on the market</option>
-                </select>
-              </div>
-              <div class="field full">
-                <label for="leadNotes">Anything useful to add</label>
-                <textarea id="leadNotes" name="notes" placeholder="Renovations, exact address, special features, or anything else James should know."></textarea>
-              </div>
-            </div>
-            <div class="lead-actions">
-              <button class="lead-button" type="submit">Request a fuller valuation</button>
-              <a class="phone-link" href="tel:+442871610402">Prefer a quick chat? Call 028 7161 0402</a>
-              <p class="status-note" id="leadStatus"></p>
-            </div>
-          </form>
-        </div>
-
-        <div class="footnote">
-          This gives you a quick guide price, not a formal valuation. Presentation, exact street position, recent comparable sales and buyer competition can still shift the final figure.
-        </div>
+      <div class="trust-point">
+        <strong>Fast and private</strong>
+        <span>Get a sensible first-pass range without a long scroll or hard sell.</span>
+      </div>
+      <div class="trust-point">
+        <strong>Ready for follow-up</strong>
+        <span>If it feels useful, James can tighten it up with a proper valuation.</span>
       </div>
     </section>
 
-    <section class="process">
-      <div class="section-tag">What happens next</div>
-      <h2>How James would tighten the figure</h2>
-      <p>A proper valuation still needs local judgement. This tool should get a homeowner much closer before that stage, then hand off cleanly.</p>
-      <div class="process-grid">
-        <div class="process-card">
-          <strong>1. Sense check the home</strong>
-          <p>James reviews presentation, finish, layout flow and any details the model cannot fully see from a form alone.</p>
-        </div>
-        <div class="process-card">
-          <strong>2. Compare nearby evidence</strong>
-          <p>Recently agreed and sold homes in the right micro-location help tighten the range and keep expectations realistic.</p>
-        </div>
-        <div class="process-card">
-          <strong>3. Agree a confident launch price</strong>
-          <p>The final advice should balance speed, buyer demand and the best route to a strong offer, not just a headline number.</p>
-        </div>
-      </div>
+    <section class="footer-note">
+      <p>This is a guide, not a formal valuation. Presentation, exact street position and nearby comparables can still move the final figure.</p>
+      <a class="call-link" href="tel:+442871610402">Prefer to talk now? Call James</a>
     </section>
   </div>
 
   <script>
-    const refs = {
-      heroRange: document.getElementById('heroRange'),
-      heroSummary: document.getElementById('heroSummary'),
-      heroBand: document.getElementById('heroBand'),
-      range: document.getElementById('range'),
-      midpoint: document.getElementById('midpoint'),
-      confidence: document.getElementById('confidence'),
-      confidenceNote: document.getElementById('confidenceNote'),
-      band: document.getElementById('band'),
-      bandNote: document.getElementById('bandNote'),
-      footprint: document.getElementById('footprint'),
-      marketBasis: document.getElementById('marketBasis'),
-      summary: document.getElementById('summary'),
-      drivers: document.getElementById('drivers'),
-      impactStrip: document.getElementById('impactStrip'),
-      breakdownList: document.getElementById('breakdownList'),
-      leadStatus: document.getElementById('leadStatus')
-    };
-
-    const districtData = {
-      BT47: { label: 'BT47', basePsm: 1680, band: 0.004, note: 'outer Derry and commuter belt stock' },
-      BT48: { label: 'BT48', basePsm: 1780, band: 0.003, note: 'cityside and premium city-edge stock' },
-      BT49: { label: 'BT49', basePsm: 1600, band: 0.006, note: 'Limavady market evidence' },
-      BT51: { label: 'BT51', basePsm: 1685, band: 0.007, note: 'wider North Coast / rural edge evidence' },
-      BT82: { label: 'BT82', basePsm: 1500, band: 0.009, note: 'Strabane and wider border-market evidence' }
-    };
-
     const areaData = {
-      Waterside: { label: 'Waterside', district: 'BT47', factor: 1.03, note: 'steady family demand close to schools and commuter routes' },
-      Cityside: { label: 'Cityside', district: 'BT48', factor: 1.02, note: 'central neighbourhoods with mixed stock and good demand' },
-      Culmore: { label: 'Culmore', district: 'BT48', factor: 1.11, note: 'one of the stronger local family and upper-tier seller patches' },
-      Eglinton: { label: 'Eglinton', district: 'BT47', factor: 1.09, note: 'village demand and detached family stock support a premium' },
-      Drumahoe: { label: 'Drumahoe', district: 'BT47', factor: 1.05, note: 'good commuter position keeps values resilient' },
-      Strathfoyle: { label: 'Strathfoyle', district: 'BT47', factor: 0.98, note: 'buyer demand is solid, though pricing is a little more value-led' },
-      Claudy: { label: 'Claudy', district: 'BT47', factor: 1.03, note: 'village homes with land or outlook can outperform wider averages' },
-      Dungiven: { label: 'Dungiven', district: 'BT47', factor: 1.01, note: 'improving commuter appeal supports mid-market pricing' },
-      Greysteel: { label: 'Greysteel', district: 'BT47', factor: 1.04, note: 'semi-rural homes often attract buyers trading space for value' },
-      Limavady: { label: 'Limavady', district: 'BT49', factor: 1.05, note: 'town-centre and family-home demand remains dependable' },
-      Strabane: { label: 'Strabane', district: 'BT82', factor: 1.0, note: 'pricing is driven more by exact street and finish than prestige premium' }
+      Culmore: { label: 'Culmore', base: 320000, note: 'strong family demand and premium patches' },
+      Eglinton: { label: 'Eglinton', base: 298000, note: 'village demand with good commuter pull' },
+      Waterside: { label: 'Waterside', base: 262000, note: 'steady family market close to schools and commuter routes' },
+      Cityside: { label: 'Cityside', base: 248000, note: 'central stock with solid day-to-day demand' },
+      Limavady: { label: 'Limavady', base: 236000, note: 'dependable market for tidy family homes' },
+      Strabane: { label: 'Strabane', base: 186000, note: 'more price-sensitive, street-by-street evidence matters more' }
     };
 
     const typeData = {
-      detached: {
-        label: 'Detached',
-        factor: 1.11,
-        band: 0.006,
-        confidencePenalty: 2,
-        sizes: { 1: 88, 2: 104, 3: 124, 4: 152, 5: 186, 6: 218 }
-      },
-      semi: {
-        label: 'Semi-detached',
-        factor: 1.03,
-        band: 0.004,
-        confidencePenalty: 1,
-        sizes: { 1: 62, 2: 80, 3: 99, 4: 121, 5: 143, 6: 162 }
-      },
-      terrace: {
-        label: 'Terrace',
-        factor: 0.96,
-        band: 0.006,
-        confidencePenalty: 2,
-        sizes: { 1: 54, 2: 70, 3: 86, 4: 103, 5: 118, 6: 132 }
-      },
-      bungalow: {
-        label: 'Bungalow',
-        factor: 1.08,
-        band: 0.007,
-        confidencePenalty: 3,
-        sizes: { 1: 70, 2: 92, 3: 114, 4: 136, 5: 158, 6: 178 }
-      },
-      apartment: {
-        label: 'Apartment',
-        factor: 0.91,
-        band: 0.012,
-        confidencePenalty: 7,
-        sizes: { 1: 49, 2: 67, 3: 84, 4: 100, 5: 116, 6: 126 }
-      }
+      detached: { label: 'detached', factor: 1.16, band: 0.072 },
+      semi: { label: 'semi-detached', factor: 1, band: 0.075 },
+      terrace: { label: 'terrace', factor: 0.91, band: 0.08 },
+      bungalow: { label: 'bungalow', factor: 1.08, band: 0.082 },
+      apartment: { label: 'apartment', factor: 0.84, band: 0.092 }
+    };
+
+    const bedroomData = {
+      2: { label: '2-bed', add: -38000 },
+      3: { label: '3-bed', add: 0 },
+      4: { label: '4-bed', add: 52000 },
+      5: { label: '5-bed', add: 108000 }
     };
 
     const conditionData = {
-      'needs-work': { label: 'Needs modernisation', multiplier: 0.9, band: 0.013, confidencePenalty: 10 },
-      fair: { label: 'Tidy but dated', multiplier: 0.96, band: 0.01, confidencePenalty: 6 },
-      good: { label: 'Good condition', multiplier: 1, band: 0.006, confidencePenalty: 2 },
-      modernised: { label: 'Recently modernised', multiplier: 1.05, band: 0.007, confidencePenalty: 3 },
-      premium: { label: 'Premium finish', multiplier: 1.1, band: 0.011, confidencePenalty: 6 }
-    };
-
-    const parkingData = {
-      street: { label: 'On-street only', short: 'on-street parking', value: 0 },
-      driveway: { label: 'Driveway', short: 'driveway parking', value: 4500 },
-      multiple: { label: 'Driveway for 2 or more', short: 'parking for 2+', value: 9000 },
-      gated: { label: 'Private or gated parking', short: 'private parking', value: 12000 }
-    };
-
-    const outdoorData = {
-      none: { label: 'No real garden', value: -3500 },
-      small: { label: 'Small garden', value: 0 },
-      family: { label: 'Family-sized garden', value: 6500 },
-      large: { label: 'Large garden or plot', value: 13500 },
-      view: { label: 'Strong outdoor setting or views', value: 16000 }
+      dated: { label: 'tidy but dated', factor: 0.95, band: 0.01 },
+      good: { label: 'good condition', factor: 1, band: 0 },
+      modern: { label: 'recently modernised', factor: 1.08, band: 0.006 },
+      premium: { label: 'premium finish', factor: 1.15, band: 0.012 }
     };
 
     const featureData = {
-      garage: { label: 'Garage', value: 8500 },
-      extension: { label: 'Extension', value: 17000 },
-      kitchen: { label: 'Modern kitchen', value: 7000 },
-      office: { label: 'Home office', value: 6500 },
-      utility: { label: 'Utility or boot room', value: 3500 },
-      ensuite: { label: 'Main bedroom en suite', value: 4000 }
+      parking: { label: 'driveway or garage', add: 12000 },
+      garden: { label: 'good garden', add: 9000 },
+      extension: { label: 'extension', add: 22000 }
     };
 
-    const form = document.getElementById('valuationForm');
-    const leadForm = document.getElementById('leadForm');
-    let lastEstimate = null;
+    const refs = {
+      area: document.getElementById('area'),
+      type: document.getElementById('type'),
+      bedrooms: document.getElementById('bedrooms'),
+      condition: document.getElementById('condition'),
+      parking: document.getElementById('parking'),
+      garden: document.getElementById('garden'),
+      extension: document.getElementById('extension'),
+      range: document.getElementById('range'),
+      summary: document.getElementById('summary'),
+      detailNote: document.getElementById('detailNote'),
+      name: document.getElementById('name'),
+      email: document.getElementById('email'),
+      phone: document.getElementById('phone'),
+      timeframe: document.getElementById('timeframe'),
+      notes: document.getElementById('notes'),
+      sendButton: document.getElementById('sendButton'),
+      status: document.getElementById('status')
+    };
 
-    function currency(value) {
+    let currentEstimate = null;
+
+    function formatCurrency(value) {
       return new Intl.NumberFormat('en-GB', {
         style: 'currency',
         currency: 'GBP',
         maximumFractionDigits: 0
-      }).format(Math.round(value));
+      }).format(Math.round(value / 1000) * 1000);
     }
 
-    function signedCurrency(value) {
-      const rounded = Math.round(value);
-      if (!rounded) return '£0';
-      return `${rounded > 0 ? '+' : '-'}${currency(Math.abs(rounded)).replace('£', '£')}`;
+    function titleCase(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
     }
 
-    function roundTo(value, step = 1000) {
-      return Math.round(value / step) * step;
+    function syncChecks() {
+      document.querySelectorAll('.check').forEach((node) => {
+        const input = node.querySelector('input');
+        node.classList.toggle('active', Boolean(input && input.checked));
+      });
     }
 
-    function clamp(value, min, max) {
-      return Math.min(Math.max(value, min), max);
-    }
+    function calculate() {
+      const area = areaData[refs.area.value];
+      const type = typeData[refs.type.value];
+      const beds = bedroomData[refs.bedrooms.value];
+      const condition = conditionData[refs.condition.value];
 
-    function percentage(value) {
-      return `${(value * 100).toFixed(1)}%`;
-    }
+      let midpoint = area.base * type.factor * condition.factor + beds.add;
+      const selectedFeatures = [];
+      let band = type.band + condition.band;
 
-    function confidenceLabel(score) {
-      if (score >= 84) return 'High';
-      if (score >= 76) return 'Medium-high';
-      if (score >= 68) return 'Medium';
-      return 'Broad';
-    }
+      Object.entries(featureData).forEach(([key, feature]) => {
+        if (refs[key].checked) {
+          midpoint += feature.add;
+          selectedFeatures.push(feature.label);
+        }
+      });
 
-    function buildBreakdownRows(parts) {
-      return parts
-        .filter((part) => part.value !== 0)
-        .map((part) => {
-          const negative = part.value < 0 ? 'negative' : '';
-          return `<div class="break-row"><span>${part.label}</span><strong class="${negative}">${signedCurrency(part.value)}</strong></div>`;
-        })
-        .join('');
-    }
-
-    function buildImpactChips(parts) {
-      return parts
-        .slice(0, 3)
-        .map((part) => {
-          const tone = part.value >= 0 ? 'positive' : 'negative';
-          return `
-            <div class="impact-chip ${tone}">
-              <div>
-                <small>${part.value >= 0 ? 'Lift' : 'Drag'}</small>
-                <div>${part.label}</div>
-              </div>
-              <span>${signedCurrency(part.value)}</span>
-            </div>
-          `;
-        })
-        .join('');
-    }
-
-    function getSelectedState() {
-      const postcode = document.getElementById('postcode').value;
-      const area = document.getElementById('area').value;
-      const type = document.getElementById('type').value;
-      const bedrooms = Number(document.getElementById('bedrooms').value);
-      const bathrooms = Number(document.getElementById('bathrooms').value);
-      const receptions = Number(document.getElementById('receptions').value);
-      const condition = document.getElementById('condition').value;
-      const parking = document.getElementById('parking').value;
-      const outdoor = document.getElementById('outdoor').value;
-      const featureKeys = Object.keys(featureData).filter((key) => document.getElementById(key).checked);
-
-      return { postcode, area, type, bedrooms, bathrooms, receptions, condition, parking, outdoor, featureKeys };
-    }
-
-    function calculate(event) {
-      if (event) event.preventDefault();
-
-      const state = getSelectedState();
-      const district = districtData[state.postcode];
-      const area = areaData[state.area];
-      const type = typeData[state.type];
-      const condition = conditionData[state.condition];
-      const parking = parkingData[state.parking];
-      const outdoor = outdoorData[state.outdoor];
-
-      const estimatedSize = type.sizes[state.bedrooms] + Math.max(0, state.bathrooms - 1) * 4 + Math.max(0, state.receptions - 1) * 6;
-      const baseMarket = estimatedSize * district.basePsm;
-      const areaAdjust = baseMarket * (area.factor - 1);
-      const typeAdjust = baseMarket * (type.factor - 1);
-      const bathroomAdjust = Math.max(0, state.bathrooms - 1) * 5500;
-      const receptionAdjust = Math.max(0, state.receptions - 1) * 6500;
-      const parkingAdjust = parking.value;
-      const outdoorAdjust = outdoor.value;
-      const featureAdjust = state.featureKeys.reduce((sum, key) => sum + featureData[key].value, 0);
-      const subtotalBeforeCondition = baseMarket + areaAdjust + typeAdjust + bathroomAdjust + receptionAdjust + parkingAdjust + outdoorAdjust + featureAdjust;
-      const conditionAdjust = subtotalBeforeCondition * (condition.multiplier - 1);
-      const midpoint = roundTo(subtotalBeforeCondition + conditionAdjust, 1000);
-
-      const postcodeMismatch = state.postcode !== area.district;
-      const featureCount = state.featureKeys.length;
-      const rangePct = clamp(
-        0.055 + district.band + type.band + condition.band + (postcodeMismatch ? 0.015 : 0) + (featureCount >= 4 ? 0.005 : 0),
-        0.055,
-        0.118
-      );
-      const low = roundTo(midpoint * (1 - rangePct), 1000);
-      const high = roundTo(midpoint * (1 + rangePct), 1000);
-
-      const confidenceScore = clamp(
-        86
-        - type.confidencePenalty
-        - condition.confidencePenalty
-        - (postcodeMismatch ? 10 : 0)
-        - (state.bedrooms >= 5 ? 4 : 0)
-        - (featureCount >= 4 ? 3 : 0)
-        + ((state.bedrooms >= 2 && state.bedrooms <= 4) ? 2 : 0)
-        + ((state.condition === 'good' || state.condition === 'modernised') ? 2 : 0),
-        54,
-        90
-      );
-      const confidence = confidenceLabel(confidenceScore);
-
-      const breakdownParts = [
-        { label: `${district.label} market base, using approx. ${estimatedSize} sq m at ${currency(district.basePsm)} per sq m`, value: baseMarket },
-        { label: `${area.label} area weighting`, value: areaAdjust },
-        { label: `${type.label} home profile`, value: typeAdjust },
-        { label: `Extra bathroom uplift`, value: bathroomAdjust },
-        { label: `Reception room uplift`, value: receptionAdjust },
-        { label: parking.label, value: parkingAdjust },
-        { label: outdoor.label, value: outdoorAdjust },
-        ...state.featureKeys.map((key) => ({ label: featureData[key].label, value: featureData[key].value })),
-        { label: condition.label, value: conditionAdjust }
-      ];
-
-      const keyDrivers = [...breakdownParts]
-        .filter((part) => part.label.indexOf('market base') === -1)
-        .sort((a, b) => Math.abs(b.value) - Math.abs(a.value));
-
-      const featureSummary = state.featureKeys.map((key) => featureData[key].label.toLowerCase());
-      const summaryBits = [
-        `Approx. ${estimatedSize} sq m`,
-        `${state.bedrooms}-bed ${type.label.toLowerCase()} home in ${area.label}`,
-        condition.label.toLowerCase(),
-        parking.short,
-        outdoor.label.toLowerCase()
-      ];
-      if (featureSummary.length) summaryBits.push(featureSummary.join(', '));
-
-      const driverLines = [];
-      driverLines.push(`${district.label} starts the model at roughly ${currency(district.basePsm)} per sq m, and the current home profile points to about ${estimatedSize} sq m of sellable space.`);
-
-      if (Math.abs(areaAdjust) >= 5000) {
-        driverLines.push(`${area.label} is ${areaAdjust >= 0 ? 'lifting' : 'softening'} the guide price because ${area.note}.`);
-      } else {
-        driverLines.push(`${area.label} sits close to the wider ${district.label} average, so finish and layout matter more than postcode prestige alone.`);
+      if (!refs.parking.checked && !refs.garden.checked) {
+        band += 0.01;
       }
 
-      if (featureSummary.length) {
-        driverLines.push(`Features adding value here include ${featureSummary.join(', ')}, which support the upper half of the range.`);
-      } else {
-        driverLines.push('This estimate is being driven more by location, footprint and condition than by extra add-ons.');
+      if (refs.extension.checked && refs.condition.value === 'premium') {
+        band -= 0.004;
       }
 
-      if (postcodeMismatch) {
-        driverLines.push(`The selected area normally behaves more like ${area.district} evidence than ${district.label}, so the confidence band is wider to reflect that overlap.`);
-      } else if (confidence === 'High' || confidence === 'Medium-high') {
-        driverLines.push('Because the area and postcode line up cleanly, the band stays reasonably tight for an instant online guide.');
-      } else {
-        driverLines.push('The band stays broader because this sort of home can move more on exact finish, street position and comparable evidence.');
-      }
+      midpoint = Math.max(midpoint, 110000);
+      band = Math.min(Math.max(band, 0.06), 0.11);
 
-      const rangeText = `${currency(low)} to ${currency(high)}`;
-      refs.heroRange.textContent = rangeText;
-      refs.range.textContent = rangeText;
-      refs.midpoint.textContent = currency(midpoint);
-      refs.confidence.textContent = confidence;
-      refs.confidenceNote.textContent = confidence === 'High'
-        ? 'Cleaner local match, mainstream home profile and tighter evidence band.'
-        : confidence === 'Medium-high'
-          ? 'Fairly typical local home profile with a sensible evidence band.'
-          : confidence === 'Medium'
-            ? 'Useful guide, though finish and comparables may move the final figure more.'
-            : 'Broader range, so a proper in-person valuation would matter sooner.';
-      refs.band.textContent = `±${percentage(rangePct)}`;
-      refs.bandNote.textContent = postcodeMismatch
-        ? 'The selected area and postcode district do not perfectly overlap, so the range is a little wider.'
-        : 'This is how far each side of the midpoint the guide currently runs.';
-      refs.footprint.textContent = `${estimatedSize} sq m`;
-      refs.marketBasis.textContent = `Based on a typical ${district.label} ${type.label.toLowerCase()} footprint and ${district.note}.`;
-      refs.summary.textContent = `${summaryBits.join(', ')}.`;
-      refs.heroSummary.textContent = `${district.label}, ${area.label}, ${state.bedrooms}-bed ${type.label.toLowerCase()}, ${condition.label.toLowerCase()}.`;
-      refs.heroBand.textContent = `${confidence} confidence, based on an estimated ${estimatedSize} sq m footprint.`;
-      refs.drivers.innerHTML = driverLines.map((line) => `<li>${line}</li>`).join('');
-      refs.impactStrip.innerHTML = buildImpactChips(keyDrivers);
-      refs.breakdownList.innerHTML = buildBreakdownRows(breakdownParts);
+      const low = midpoint * (1 - band);
+      const high = midpoint * (1 + band);
+      const featureText = selectedFeatures.length ? `, with ${selectedFeatures.join(' and ')}` : '';
 
-      lastEstimate = {
-        ...state,
-        district,
-        area,
-        type,
-        condition,
-        parking,
-        outdoor,
-        estimatedSize,
-        low,
-        high,
-        midpoint,
-        confidence,
-        rangePct,
-        summary: refs.summary.textContent
+      refs.range.textContent = `${formatCurrency(low)} to ${formatCurrency(high)}`;
+      refs.summary.textContent = `${area.label}, ${beds.label} ${type.label}, ${condition.label}${featureText}.`;
+      refs.detailNote.textContent = `Guide midpoint ${formatCurrency(midpoint)}. Based on ${area.note}. A visit and comparable evidence can still shift the final figure.`;
+
+      currentEstimate = {
+        area: area.label,
+        type: titleCase(type.label),
+        bedrooms: beds.label,
+        condition: condition.label,
+        features: selectedFeatures,
+        midpoint: formatCurrency(midpoint),
+        range: `${formatCurrency(low)} to ${formatCurrency(high)}`,
+        timeframe: refs.timeframe.value
       };
     }
 
-    function handleLeadSubmit(event) {
-      event.preventDefault();
-      refs.leadStatus.textContent = '';
+    function buildMailto() {
+      if (!currentEstimate) calculate();
 
-      const name = document.getElementById('leadName').value.trim();
-      const email = document.getElementById('leadEmail').value.trim();
-      const phone = document.getElementById('leadPhone').value.trim();
-      const timeframe = document.getElementById('leadTimeframe').value;
-      const notes = document.getElementById('leadNotes').value.trim();
+      const name = refs.name.value.trim();
+      const email = refs.email.value.trim();
+      const phone = refs.phone.value.trim();
+      const timeframe = refs.timeframe.value;
+      const notes = refs.notes.value.trim();
 
       if (!name || (!email && !phone)) {
-        refs.leadStatus.textContent = 'Please add your name and either an email address or phone number.';
+        refs.status.textContent = 'Please add your name and either an email address or phone number.';
         return;
       }
 
-      if (!lastEstimate) calculate();
+      const featureLine = currentEstimate.features.length ? currentEstimate.features.join(', ') : 'No extra features selected';
+      const subject = encodeURIComponent(`Guide price enquiry from ${name}`);
+      const body = encodeURIComponent(
+`Hi James,
 
-      const subject = `Guide price follow-up for ${lastEstimate.area.label} ${lastEstimate.district.label}`;
-      const bodyLines = [
-        `Name: ${name}`,
-        `Phone: ${phone || 'Not provided'}`,
-        `Email: ${email || 'Not provided'}`,
-        `Selling timeframe: ${timeframe}`,
-        '',
-        `Guide price range: ${currency(lastEstimate.low)} to ${currency(lastEstimate.high)}`,
-        `Midpoint: ${currency(lastEstimate.midpoint)}`,
-        `Confidence: ${lastEstimate.confidence}`,
-        `Summary: ${lastEstimate.summary}`,
-        '',
-        `Notes: ${notes || 'None added'}`
-      ];
+Please can you follow up on this guide price enquiry?
 
-      const href = `mailto:james@jamesgormanproperty.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-      window.location.href = href;
-      refs.leadStatus.textContent = 'Your email app should open with the guide price details pre-filled for James.';
+Name: ${name}
+Email: ${email || 'Not provided'}
+Phone: ${phone || 'Not provided'}
+Selling timeframe: ${timeframe}
+Area: ${currentEstimate.area}
+Property type: ${currentEstimate.type}
+Bedrooms: ${currentEstimate.bedrooms}
+Condition: ${currentEstimate.condition}
+Features: ${featureLine}
+Guide range: ${currentEstimate.range}
+Midpoint: ${currentEstimate.midpoint}
+Notes: ${notes || 'None added'}
+
+Thanks`
+      );
+
+      window.location.href = `mailto:hello@jamesgormanproperty.com?subject=${subject}&body=${body}`;
+      refs.status.textContent = 'Your email app should open with the guide price and contact details ready for James.';
     }
 
-    form.addEventListener('submit', calculate);
-    form.addEventListener('change', calculate);
-    form.addEventListener('input', calculate);
-    leadForm.addEventListener('submit', handleLeadSubmit);
+    [refs.area, refs.type, refs.bedrooms, refs.condition, refs.parking, refs.garden, refs.extension, refs.timeframe].forEach((field) => {
+      field.addEventListener('change', () => {
+        syncChecks();
+        calculate();
+      });
+    });
+
+    refs.sendButton.addEventListener('click', buildMailto);
+
+    syncChecks();
     calculate();
   </script>
 </body>
