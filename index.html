@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Gorman Property | Instant Property Valuation</title>
-  <meta name="description" content="Indicative property valuation tool for James Gorman Property. Enter your property details to get an instant estimated price range." />
+  <meta name="description" content="Get an instant guide price range for your property with James Gorman Property." />
   <style>
     :root {
       --bg: #f6f1ea;
@@ -801,7 +801,7 @@
           <span>Local Homes, Modern Marketing.</span>
         </div>
       </div>
-      <div class="brand-pill">North West homes, instant indicative range</div>
+      <div class="brand-pill">North West homes, instant guide price</div>
     </div>
 
     <section class="hero">
@@ -810,35 +810,35 @@
           <div class="eyebrow">Indicative property valuation</div>
           <h1>Find out what your home could be worth.</h1>
           <p>
-            Enter a few details about your property and get an instant indicative price range based on area, size,
-            condition and key selling features.
+            Enter a few details about your home to get an instant guide price range based on the area, size,
+            condition and features.
           </p>
 
           <div class="hero-actions">
             <a class="hero-cta" href="#valuationForm">Start valuation</a>
-            <div class="hero-note">A simple demo for housing-specific pricing signals</div>
+            <div class="hero-note">Takes less than a minute</div>
           </div>
 
           <div class="hero-highlights" aria-label="Key valuation highlights">
             <div>
-              <strong>Area-led pricing</strong>
-              <span>Weighting reflects postcode and local buyer demand.</span>
+              <strong>Quick to complete</strong>
+              <span>Answer a few simple questions about your home.</span>
             </div>
             <div>
-              <strong>Home-specific inputs</strong>
+              <strong>Based on your details</strong>
               <span>Bedrooms, condition, parking and outdoor space all matter.</span>
             </div>
             <div>
-              <strong>Clear result panel</strong>
-              <span>Indicative range, midpoint and confidence in one view.</span>
+              <strong>Clear guide price</strong>
+              <span>See a price range straight away, with no waiting around.</span>
             </div>
           </div>
         </div>
 
         <div class="hero-image" aria-hidden="true">
           <div class="hero-panel">
-            <strong>Designed to feel like a proper James Gorman Property tool</strong>
-            <span>Fast to use, housing-specific, and polished enough for a client-facing showcase link.</span>
+            <strong>Thinking of selling?</strong>
+            <span>Get a quick idea of what your home could be worth before arranging a full valuation.</span>
           </div>
         </div>
       </div>
@@ -848,7 +848,7 @@
       <div class="card">
         <div class="card-header">
           <h2>Property details</h2>
-          <p class="lead">Answer the core housing questions and the valuation panel updates with an indicative range.</p>
+          <p class="lead">Tell us a few basics about your home and we will show you an instant guide price range.</p>
         </div>
 
         <form id="valuationForm">
@@ -943,7 +943,7 @@
           </div>
 
           <div class="form-section">
-            <p class="section-title">Extra value signals</p>
+            <p class="section-title">Extra details</p>
             <div class="grid">
               <div class="field full">
                 <label for="garage">Selected features</label>
@@ -958,50 +958,50 @@
           </div>
 
           <div class="submit-wrap">
-            <button class="submit" type="submit">Get indicative price</button>
-            <p class="helper">This is an indicative guide only and not a formal survey valuation.</p>
+            <button class="submit" type="submit">Get guide price</button>
+            <p class="helper">This is a guide price only. For a more accurate figure, James Gorman Property would need to view the property.</p>
           </div>
         </form>
 
         <div class="tiny">
-          Mockup only. This concept page shows how a James Gorman Property valuation engine could look and feel.
+          Not sure about every detail? Choose the closest match and adjust it any time.
         </div>
       </div>
 
       <div class="card card--results">
         <div class="card-header">
-          <h2>Indicative valuation</h2>
-          <p class="lead">A confident, client-friendly result view based on the property profile entered.</p>
+          <h2>Your guide price</h2>
+          <p class="lead">Your result updates as you change the details, so you can see how different features affect the guide price.</p>
         </div>
 
         <div class="result-band" aria-live="polite">
-          <div class="result-label">Estimated range</div>
+          <div class="result-label">Guide price range</div>
           <div class="price" id="range">£188,000 – £212,000</div>
           <div class="sub" id="summary">3-bed semi-detached home in Waterside, good condition, driveway, garage and family-sized garden.</div>
         </div>
 
         <div class="stats-head">
-          <strong>What shapes the estimate</strong>
-          <span>Updated as inputs change</span>
+          <strong>What affects the price</strong>
+          <span>Updates as you go</span>
         </div>
 
         <div class="mini-stats">
           <div class="mini">
             <strong id="midpoint">£200,000</strong>
-            <span>Midpoint estimate</span>
+            <span>Middle of range</span>
           </div>
           <div class="mini">
             <strong id="confidence">Medium</strong>
-            <span>Confidence level</span>
+            <span>Confidence</span>
           </div>
           <div class="mini">
             <strong id="spread">£24,000</strong>
-            <span>Range width</span>
+            <span>Range size</span>
           </div>
         </div>
 
         <div class="drivers">
-          <h3>Pricing drivers</h3>
+          <h3>What is driving the price</h3>
           <ul class="bullets" id="drivers">
             <li>Waterside family homes remain one of the strongest local seller segments.</li>
             <li>Garage, driveway and outdoor space all support the upper end of the range.</li>
@@ -1010,7 +1010,7 @@
         </div>
 
         <div class="footnote">
-          This tool is designed to give an instant indicative range, not a formal survey valuation.
+          This gives you a quick guide price, not a formal valuation.
         </div>
       </div>
     </section>
@@ -1098,7 +1098,7 @@
       refs.summary.textContent = `${summaryBits.join(', ')}.`;
 
       const lines = [];
-      lines.push(`${area} gives the estimate its biggest local weighting.`);
+      lines.push(`${area} has the biggest impact on the guide price.`);
 
       if (type === 'detached') lines.push('Detached homes tend to command a stronger premium where condition is solid.');
       else if (type === 'semi') lines.push('Semi-detached homes sit in a strong family buyer bracket across the North West.');
@@ -1112,9 +1112,9 @@
         if (extension) picked.push('extension');
         if (kitchen) picked.push('modern kitchen');
         if (office) picked.push('home office');
-        lines.push(`Extra value signals selected: ${picked.join(', ')}.`);
+        lines.push(`Features adding value: ${picked.join(', ')}.`);
       } else {
-        lines.push('Without extra value signals selected, the estimate leans mainly on area, size and condition.');
+        lines.push('This guide price is based mainly on the area, size and condition of the home.');
       }
 
       refs.drivers.innerHTML = lines.map((line) => `<li>${line}</li>`).join('');
